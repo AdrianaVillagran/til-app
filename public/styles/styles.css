@@ -1,12 +1,10 @@
-body {
+
+.jumbotron {
   background-image: url(/images/background.jpg);
   background-size: cover;
   background-repeat: no-repeat;
-}
-.jumbotron {
-  background: rgba(0,0,0,0.5);
-  color: pink;
-  height: 300px;
+  color: #cbd2d6;
+  height: 400px;
 }
 
 .nav-button{
@@ -21,7 +19,6 @@ body {
   border: none;
 }
 
-
 #cover-title {
-   margin-top: 100px;
+  margin-top: 150px;
 }
