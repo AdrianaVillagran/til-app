@@ -1,0 +1,22 @@
+{
+  "name": "til-app",
+  "description": "",
+  "main": "server.js",
+  "authors": [
+    "AdrianaVillagran <anvillagran1@gmail.com>"
+  ],
+  "license": "ISC",
+  "homepage": "https://github.com/AdrianaVillagran/til-app",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "bootstrap": "^3.3.6",
+    "handlebars": "^4.0.5",
+    "jquery": "^2.2.3"
+  }
+}

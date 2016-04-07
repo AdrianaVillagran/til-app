@@ -1,0 +1,24 @@
+.jumbotron {
+  background-image: url(/images/background.jpg);
+  background-size: cover;
+  background-repeat: no-repeat;
+  color: #EEE;
+  height: 400px;
+}
+
+.nav-button{
+  background: #425c6b;
+  border: none;
+  color: #FFF;
+}
+
+.nav-button:hover {
+  background: #8bb0c5;
+  color: #FFF;
+  border: none;
+}
+
+
+#cover-title {
+   margin-top: 150px;
+}
