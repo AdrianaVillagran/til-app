@@ -39,6 +39,9 @@ $(function(){
     $('#loginModal').modal();
   });
 
+  //delete album click event
+  $('#beadsOfWisdom').on('click', '.delete-bow', deleteBow);
+
 });
 
 
@@ -72,6 +75,21 @@ function renderBow(bow) {
   $bowList.prepend(bowHtml);
 }
 
-function deleteBow(event) {
-  console.log('delete button is working');
+//handles Deleted album success
+function deleteBow(event){
+  event.preventDefault();
+
+  var bowId = $(this).closest('.bow').data('bow-id');
+  console.log(bowId);
+  $('div[data-bow-id=' + bowId + ']').remove();
+  $.ajax ({
+    method: 'DELETE',
+    url: '/api/bows/' + bowId,
+    success: function(json) {
+      console.log("album successfully deleted");
+    },
+    error: function(err) {
+      console.log("the album was not successfully deleted", err);
+    }
+  });
 }

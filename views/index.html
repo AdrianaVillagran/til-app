@@ -80,8 +80,8 @@
              <form>
                <div class="row">
                  <div class="col-sm-8">
-                   <label for="beadsOfWisdom">Bead of Wisdom</label>
-                   <input type="text" name="beadsOfWisdom" class="form-control" placeholder="What you learned...">
+                   <label for="beadOfWisdom">Bead of Wisdom</label>
+                   <input type="text" name="beadOfWisdom" class="form-control" placeholder="What you learned...">
                  </div>
                  <div class="col-sm-4">
                    <label for="date">Date</label>
@@ -113,7 +113,7 @@
 
              <script id="wisdom-template" type="text/x-handlebars-template">
 
-              <div class="panel panel-default" data-target="{{_id}}">
+              <div class="panel panel-default bow" data-bow-id="{{_id}}">
                 <div class="panel-heading" align="right">Posted by {{username}} on {{date}}</div>
                   <div class="panel-body">
                     <h3>{{beadOfWisdom}}</h3>
@@ -131,7 +131,7 @@
 
                   </div>
                 </div>
-               
+
               </script>
 
         </div>
