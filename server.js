@@ -8,7 +8,7 @@ var express = require('express'),
 var db = require('./models'),
     User = db.User;
 
-    
+
 // generate a new express app and call it 'app'
 var app = express();
 
@@ -61,6 +61,19 @@ app.get('/signup', function (req, res) {
 /*
  * JSON Endpoints
  */
+
+ // sign up and create new user
+app.post('/signup', function (req, res) {
+ var new_user = new User({ username: req.body.username });
+ User.register(new_user, req.body.password,
+   function (err, newUser) {
+     passport.authenticate('local')(req, res, function() {
+       res.redirect('/');
+     });
+   }
+ );
+});
+
 app.get('/api', controllers.api.index);
 app.get('/api/bows', controllers.bow.index);
 app.post('/api/bows', controllers.bow.create);
