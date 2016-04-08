@@ -37,22 +37,21 @@ function destroy(req, res) {
 
 function update(req, res) {
   var bowId = req.params.id;
-  db.Artwork.findById(bowId, function(err, foundBow) {
+  db.Bow.findById(bowId, function(err, foundBow) {
     if(err) {
-      console.log(err);
+      console.log("There was an error updating bow", err);
     }
     foundBow.beadOfWisdom = req.body.beadOfWisdom;
     foundBow.description = req.body.description;
     foundBow.date = req.body.date;
     foundBow.resourceUrl= req.body.resourceUrl;
     foundBow.topic = req.body.topic;
-
+    console.log(foundBow);
     foundBow.save(function (err, updatedBow) {
+      if(err) {console.log("There was an error updating bow", err);}
       res.status(200).json(updatedBow);
     });
   });
-
-
 }
 
 

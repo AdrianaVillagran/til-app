@@ -1,7 +1,8 @@
 // global variables
 var $bowList,
     bowTemplate,
-    $newBowForm;
+    $newBowForm,
+    $updateForm;
 
 
 $(function(){
@@ -13,6 +14,7 @@ $(function(){
   bowTemplate = Handlebars.compile(bowSource);
 
   $newBowForm = $('#addBow form');
+  $updateForm = $('#beadsOfWisdom .update-form');
 
   //GET call for bows data
   $.ajax({
@@ -42,8 +44,11 @@ $(function(){
   //addBow click event
   $('#addBow').on('submit', addBowSubmit);
 
-  //delete album click event
-  $('#beadsOfWisdom').on('click', '.delete-bow', deleteBow);
+  //delete bow click event
+  $bowList.on('click', '.delete-bow', deleteBow);
+
+  // update bow click event
+  $bowList.on('click', '.edit-bow', updateBow);
 
 });
 
@@ -79,7 +84,7 @@ function renderBow(bow) {
   $bowList.prepend(bowHtml);
 }
 
-//handles Deleted album success
+//handles Deleted bow success
 function deleteBow(event){
   event.preventDefault();
 
@@ -96,4 +101,23 @@ function deleteBow(event){
       console.log("the album was not successfully deleted", err);
     }
   });
+}
+
+//handles update bow success
+function updateBow(event) {
+  event.preventDefault();
+  console.log('edit bow button clicked!');
+  var bowId = $(this).closest('.bow').data('bow-id');
+  console.log(bowId);
+  var updateInput = $('#update-' + bowId + " form").serialize();
+  console.log(updateInput);
+  $.ajax({
+    method:'PUT',
+    url: '/api/bows/' + bowId,
+    data: updateInput,
+    success: function(json) { console.log('bow has been successfully updated'); },
+    error: function(err) { console.log('there was an error updating bow', err); }
+  });
+
+
 }
