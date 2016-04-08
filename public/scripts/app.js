@@ -7,9 +7,11 @@ var $bowList,
 $(function(){
   console.log('sanity check');
 
+  // compiles Handlebars
   var bowSource = $('#wisdom-template').html();
   $bowList = $('#beadsOfWisdom');
   bowTemplate = Handlebars.compile(bowSource);
+
   $newBowForm = $('#addBow form');
 
   //GET call for bows data
@@ -21,9 +23,6 @@ $(function(){
       console.log("There was an error getting bows:", err);
     }
   });
-
-  $('#addBow').on('submit', addBowSubmit);
-  $('.delete-bow').on('click', deleteBow);
 
   //navbar sign up button opens signupModal
   $('.sign-up').on('click', function(event){
@@ -39,13 +38,17 @@ $(function(){
     $('#loginModal').modal();
   });
 
+
+  //addBow click event
+  $('#addBow').on('submit', addBowSubmit);
+
   //delete album click event
   $('#beadsOfWisdom').on('click', '.delete-bow', deleteBow);
 
 });
 
 
-//
+//handles addBow POST call
 function addBowSubmit(event) {
   event.preventDefault();
 
@@ -59,17 +62,18 @@ function addBowSubmit(event) {
     }
   });
 
+  // resets addBow form
   $newBowForm[0].reset();
 }
 
-//handles bow success
+//handles bow GET success
 function handleBowSuccess(bows) {
     bows.forEach(function(bow) {
       renderBow(bow);
     });
 }
 
-// this function takes a single album and renders it to the page
+// takes a single bow and renders it to the top of the page
 function renderBow(bow) {
   var bowHtml = bowTemplate(bow);
   $bowList.prepend(bowHtml);
