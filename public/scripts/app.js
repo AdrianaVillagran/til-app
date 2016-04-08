@@ -8,6 +8,10 @@ var $bowList,
 $(function(){
   console.log('sanity check');
 
+  $('#datetimepicker1').datetimepicker({
+      format: 'MM/DD/YYYY'
+  });
+
   // compiles Handlebars
   var bowSource = $('#wisdom-template').html();
   $bowList = $('#beadsOfWisdom');
@@ -26,19 +30,19 @@ $(function(){
     }
   });
 
-  //navbar sign up button opens signupModal
-  $('.sign-up').on('click', function(event){
-    event.preventDefault();
-    console.log('sign up button clicked!');
-    $('#signupModal').modal();
-  });
-
-  //navbar login  button opens loginModal
-  $('.login').on('click', function(event){
-    event.preventDefault();
-    console.log('login button clicked!');
-    $('#loginModal').modal();
-  });
+  // //navbar sign up button opens signupModal
+  // $('.sign-up').on('click', function(event){
+  //   event.preventDefault();
+  //   console.log('sign up button clicked!');
+  //   $('#signupModal').modal();
+  // });
+  //
+  // //navbar login  button opens loginModal
+  // $('.login').on('click', function(event){
+  //   event.preventDefault();
+  //   console.log('login button clicked!');
+  //   $('#loginModal').modal();
+  // });
 
 
   //addBow click event
@@ -61,7 +65,7 @@ function addBowSubmit(event) {
     method: 'POST',
     url: "/api/bows",
     data: $newBowForm.serialize(),
-    success: newBowSuccess,
+    success: renderBow,
     error: function(err) {
       console.log("Oops, there was an error posting bow!",err);
     }
@@ -106,9 +110,16 @@ function deleteBow(event){
 //handles update bow success
 function updateBow(event) {
   event.preventDefault();
+
   console.log('edit bow button clicked!');
   var bowId = $(this).closest('.bow').data('bow-id');
   console.log(bowId);
+
+  // doesnt' work but keep trying ;)
+  $('#date-' + bowId).datetimepicker({
+      format: 'MM/DD/YYYY'
+  });
+
   var updateInput = $('#update-' + bowId + " form").serialize();
   console.log(updateInput);
   $.ajax({

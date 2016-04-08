@@ -43,7 +43,7 @@ function update(req, res) {
     }
     foundBow.beadOfWisdom = req.body.beadOfWisdom;
     foundBow.description = req.body.description;
-    foundBow.date = req.body.date;
+    foundBow.date = foundBow.date;
     foundBow.resourceUrl= req.body.resourceUrl;
     foundBow.topic = req.body.topic;
     console.log(foundBow);
