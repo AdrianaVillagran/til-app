@@ -36,6 +36,7 @@ app.get('/', function homepage (req, res) {
  */
 app.get('/api', controllers.api.index);
 app.get('/api/bows', controllers.bow.index);
+app.post('/api/bows', controllers.bow.create);
 
 
 

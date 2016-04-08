@@ -2,7 +2,7 @@ var db = require('../models');
 
 // GET /api/bows
 function index(req, res) {
-  
+
   db.Bow.find(function (err, bows) {
     if(err) {
       res.status(404).send("Beads of wisdom not found!");
@@ -14,11 +14,11 @@ function index(req, res) {
 
 
 function create(req, res) {
-
-
-
-
-
+  db.Bow.create(req.body, function(err, bow) {
+     if (err) { console.log('error creating bow', err); }
+     console.log("New bow created!", bow);
+     res.status(200).json(bow);
+   });
 }
 
 function show(req, res) {
