@@ -58,6 +58,11 @@ app.get('/signup', function (req, res) {
   res.render('signup'); // you can also use res.sendFile
 });
 
+// show login view
+app.get('/login', function (req, res) {
+  res.render('login'); // you can also use res.sendFile
+});
+
 /*
  * JSON Endpoints
  */
@@ -74,15 +79,17 @@ app.post('/signup', function (req, res) {
  );
 });
 
+// log in user
+app.post('/login', passport.authenticate('local'), function (req, res) {
+  console.log(req.user.username);
+  res.redirect('/');
+});
+
 app.get('/api', controllers.api.index);
 app.get('/api/bows', controllers.bow.index);
 app.post('/api/bows', controllers.bow.create);
 app.delete('/api/bows/:id', controllers.bow.destroy);
 app.put('/api/bows/:id', controllers.bow.update);
-
-
-
-
 
 
 // listen on port 3000
