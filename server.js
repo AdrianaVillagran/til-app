@@ -85,6 +85,14 @@ app.post('/login', passport.authenticate('local'), function (req, res) {
   res.redirect('/');
 });
 
+// log out user
+app.get('/logout', function (req, res) {
+  console.log("BEFORE logout", req.user);
+  req.logout();
+  console.log("AFTER logout", req.user);
+  res.redirect('/');
+});
+
 app.get('/api', controllers.api.index);
 app.get('/api/bows', controllers.bow.index);
 app.post('/api/bows', controllers.bow.create);
