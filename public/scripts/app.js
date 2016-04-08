@@ -115,9 +115,18 @@ function updateBow(event) {
     method:'PUT',
     url: '/api/bows/' + bowId,
     data: updateInput,
-    success: function(json) { console.log('bow has been successfully updated'); },
+    success: handleUpdatedBow,
     error: function(err) { console.log('there was an error updating bow', err); }
   });
+  //$('#update-' + bowId + " form")[0].reset();
 
+}
 
+//renders updated bow to view
+function handleUpdatedBow(json) {
+  var bowId = json._id;
+  // removes bow from the page
+  $('[data-bow-id=' + bowId + ']').remove();
+  // re-renders it with most current data
+  renderBow(json);
 }
