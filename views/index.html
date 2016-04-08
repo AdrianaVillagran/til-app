@@ -20,7 +20,7 @@
   </head>
   <body>
     <!-- Jumbotron cover -->
-    <nav class="navbar navbar-inverse navbar-fixed-top">
+    <nav class="navbar navbar-inverse navbar-static-top">
       <div class="container">
         <div class="navbar-header">
           <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
@@ -41,10 +41,11 @@
     </nav>
     <div class="jumbotron">
       <div id="cover-title" class="container">
-        <h1>TIL</h1>
+        <h1>T.I.L</h1>
         <h3>A place where you can drop your daily beads of wisdom</h3>
       </div>
     </div>
+
 <!-- End of Jumbotron cover -->
 
 <!-- Knowledge nugget template -->
@@ -89,11 +90,15 @@
                    <label for="description">Description</label>
                    <input type="text" name="description" class="form-control" placeholder="200 character limit">
                  </div>
-                 <div class="col-sm-6">
+                 <div class="col-sm-4">
                    <label for="topic">Topic</label>
                    <input type="text" name="topic" class="form-control" placeholder="">
                  </div>
-                 <div class="col-sm-6">
+                 <div class="col-sm-4">
+                   <label for="resourceTitle">Resource</label>
+                   <input type="text" name="resourceTitle" class="form-control" placeholder="">
+                 </div>
+                 <div class="col-sm-4">
                    <label for="resourceUrl">Resource URL</label>
                    <input type="text" name="resourceUrl" class="form-control" placeholder="">
                  </div>
@@ -115,7 +120,7 @@
                     <h3>{{beadOfWisdom}}</h3>
                     <p>{{description}}</p>
                     <p><strong>Resource:</strong>
-                      <a href"{{resourceUrl}}">{{resourceName}}</a>
+                      <a href"{{resource.url}}">{{resource.title}}</a>
                     </p>
                   </div>
                   <div class="panel-footer">Topic: {{topic}}</div>
