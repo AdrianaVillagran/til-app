@@ -1,26 +1,29 @@
 // global variables
-var allBows = [],
-    $bowList,
-    bowTemplate;
+var $bowList,
+    bowTemplate,
+    $newBowForm;
 
 
 $(function(){
   console.log('sanity check');
 
+  var bowSource = $('#wisdom-template').html();
+  $bowList = $('#beadsOfWisdom');
+  bowTemplate = Handlebars.compile(bowSource);
+  $newBowForm = $('#addBow form');
+
   //GET call for bows data
   $.ajax({
     method: 'GET',
     url: '/api/bows',
-    success: function(json) {
-      allBows = json;
-      renderBows();
-    },
+    success: handleBowSuccess,
     error: function (err) {
       console.log("There was an error getting bows:", err);
     }
   });
 
   $('#addBow').on('submit', addBowSubmit);
+  $('.delete-bow').on('click', deleteBow);
 
   //navbar sign up button opens signupModal
   $('.sign-up').on('click', function(event){
@@ -38,30 +41,37 @@ $(function(){
 
 });
 
-//renders bows to the view
-function renderBows(bows) {
-  var bowSource = $('#wisdom-template').html();
-  $bowList = $('#beadsOfWisdom');
-  bowTemplate = Handlebars.compile(bowSource);
-
-  var bowHtml = bowTemplate({beads: allBows});
-  $bowList.prepend(bowHtml);
-}
 
 //
 function addBowSubmit(event) {
   event.preventDefault();
-  console.log($('#addBow form').serialize());
+
   $.ajax ({
     method: 'POST',
     url: "/api/bows",
-    data: $('#addBow form').serialize(),
-    success: function(json) {
-      console.log("Success adding bow! Here's what you added:", json);
-    },
+    data: $newBowForm.serialize(),
+    success: newBowSuccess,
     error: function(err) {
       console.log("Oops, there was an error posting bow!",err);
     }
   });
 
+  $newBowForm[0].reset();
+}
+
+//handles bow success
+function handleBowSuccess(bows) {
+    bows.forEach(function(bow) {
+      renderBow(bow);
+    });
+}
+
+// this function takes a single album and renders it to the page
+function renderBow(bow) {
+  var bowHtml = bowTemplate(bow);
+  $bowList.prepend(bowHtml);
+}
+
+function deleteBow(event) {
+  console.log('delete button is working');
 }

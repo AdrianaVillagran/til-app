@@ -37,6 +37,8 @@ app.get('/', function homepage (req, res) {
 app.get('/api', controllers.api.index);
 app.get('/api/bows', controllers.bow.index);
 app.post('/api/bows', controllers.bow.create);
+app.delete('/api/bows/:id', controllers.bow.destroy);
+// app.put('/api/bows/:id', controllers.bow.update);
 
 
 

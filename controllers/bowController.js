@@ -7,7 +7,7 @@ function index(req, res) {
     if(err) {
       res.status(404).send("Beads of wisdom not found!");
     }
-    res.json(bows);
+    res.status(200).json(bows);
   });
 
 }
@@ -28,10 +28,30 @@ function show(req, res) {
 }
 
 function destroy(req, res) {
-
+  var bowId = req.params.id;
+  db.Bow.findOneAndRemove({_id: bowId}, function (err, foundBow) {
+    if(err) { console.log('There was an error', err); }
+    res.status(200).json(foundBow);
+  });
 }
 
 function update(req, res) {
+  var bowId = req.params.id;
+  db.Artwork.findById(bowId, function(err, foundBow) {
+    if(err) {
+      console.log(err);
+    }
+    foundBow.beadOfWisdom = req.body.beadOfWisdom;
+    foundBow.description = req.body.description;
+    foundBow.date = req.body.date;
+    foundBow.resourceUrl= req.body.resourceUrl;
+    foundBow.topic = req.body.topic;
+
+    foundBow.save(function (err, updatedBow) {
+      res.status(200).json(updatedBow);
+    });
+  });
+
 
 }
 
