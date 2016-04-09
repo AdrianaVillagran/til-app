@@ -8,9 +8,9 @@ var $bowList,
 $(function(){
   console.log('sanity check');
 
-  $('#datetimepicker1').datetimepicker({
-      format: 'MM/DD/YYYY'
-  });
+  // $('#datetimepicker1').datetimepicker({
+  //     format: 'MM/DD/YYYY'
+  // });
 
   // compiles Handlebars
   var bowSource = $('#wisdom-template').html();

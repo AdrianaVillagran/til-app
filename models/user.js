@@ -3,9 +3,9 @@ var mongoose = require('mongoose'),
     passportLocalMongoose = require('passport-local-mongoose');
 
 var UserSchema = new Schema({
-  email: String,
-  username: String,
+  username: {type: String, required: true},
   password: String,
+  createdAt: {type: Date, default: Date.now()}
   // bows: [Bow.schema]
 });
 

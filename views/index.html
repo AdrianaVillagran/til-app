@@ -8,15 +8,15 @@
 
     <!-- STYLESHEETS -->
     <link rel="stylesheet" href="vendor/bootstrap/dist/css/bootstrap.min.css">
-    <link rel="stylesheet" href="/vendor/eonasdan-bootstrap-datetimepicker/build/css/bootstrap-datetimepicker.min.css">
+    <!-- <link rel="stylesheet" href="/vendor/eonasdan-bootstrap-datetimepicker/build/css/bootstrap-datetimepicker.min.css"> -->
     <link rel="stylesheet" href="styles/styles.css">
 
     <!-- VENDOR SCRIPTS -->
     <script src="/vendor/jQuery/dist/jquery.min.js"></script>
-    <script src="/vendor/moment/min/moment.min.js"></script>
+    <!-- <script src="/vendor/moment/min/moment.min.js"></script> -->
     <script src="/vendor/bootstrap/dist/js/bootstrap.min.js"></script>
     <script src="/vendor/handlebars/handlebars.min.js"></script>
-    <script type="text/javascript" src="/vendor/eonasdan-bootstrap-datetimepicker/build/js/bootstrap-datetimepicker.min.js"></script>
+    <!-- <script type="text/javascript" src="/vendor/eonasdan-bootstrap-datetimepicker/build/js/bootstrap-datetimepicker.min.js"></script> -->
 
 
     <!-- APPLICATION SCRIPTS -->
@@ -87,16 +87,10 @@
                    <label for="beadOfWisdom">Bead of Wisdom</label>
                    <input type="text" name="beadOfWisdom" class="form-control" placeholder="What you learned...">
                  </div>
-                 <div class='col-sm-4'>
-                   <div class="form-group">
-                       <div class='input-group date' id='datetimepicker1'>
-                           <input type='text' class="form-control" />
-                           <span class="input-group-addon">
-                               <span class="glyphicon glyphicon-calendar"></span>
-                           </span>
-                       </div>
-                   </div>
-               </div>
+                 <div class="col-sm-4">
+                   <label for="date">Date</label>
+                   <input type="text" name="date" class="form-control" placeholder="mm/dd/yyyy">
+                 </div>
                  <div class="col-sm-12">
                    <label for="description">Description</label>
                    <input type="text" name="description" class="form-control" placeholder="200 character limit">
@@ -147,7 +141,7 @@
                       <hr>
                        <form class="update-form">
                          <div class="row">
-                           <div class="col-sm-8">
+                           <div class="col-sm-12">
                              <label for="beadOfWisdom">Bead of Wisdom</label>
                              <input type="text" name="beadOfWisdom" class="form-control" value="{{beadOfWisdom}}">
                            </div>

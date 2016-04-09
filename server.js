@@ -72,12 +72,34 @@ app.post('/signup', function (req, res) {
  var new_user = new User({ username: req.body.username });
  User.register(new_user, req.body.password,
    function (err, newUser) {
+     if (err){
+       console.log(err)
+       return res.status(400)//.json({error: err})
+     }
+
      passport.authenticate('local')(req, res, function() {
        res.redirect('/');
      });
    }
  );
 });
+
+// app.get('/gimmie-cookie', function(req, res){
+//   res.cookie("OmNom", "fo-real")
+//   res.cookie("another", "1")
+//   res.send("Huzzah")
+// })
+//
+// app.get('/eat-cookie', function(req, res){
+//   // res.clearCookie('OmNom')
+//   // res.clearCookie('another')
+//   res.cookie("another", parseInt(req.cookies.another) + 1)
+//   res.send("<a href='/eat-cookie'>Eat another</a>")
+// })
+//
+// app.get("/api/me", function(req, res){
+//   res.json(req.user);
+// })
 
 // log in user
 app.post('/login', passport.authenticate('local'), function (req, res) {
