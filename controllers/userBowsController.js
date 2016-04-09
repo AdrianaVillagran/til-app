@@ -66,8 +66,36 @@ function destroy(req, res) {
 }
 
 function update(req, res) {
+  if(!req.user) {
+    return res.sendStatus(401);
+  }
 
-  
+  var userId = req.params.userId;
+  var bowId = req.params.id;
+
+
+  db.User.findOne({_id: userId}, function (err, foundUser) {
+    if(err) {
+      console.log("error finding user to update", err);
+      res.send(404);
+    }
+
+    var foundBow = foundUser.bows.id(bowId);
+    foundBow.beadOfWisdom = req.body.beadOfWisdom;
+    foundBow.description = req.body.description;
+    foundBow.date = foundBow.date;
+    foundBow.resourceUrl= req.body.resourceUrl;
+    foundBow.topic = req.body.topic;
+
+    foundUser.save(function (err, savedUser) {
+      if(err) {
+        console.log("error saving updated user", err);
+        res.send(400);
+      }
+      res.json(foundBow);
+    });
+  });
+
 
 }
 

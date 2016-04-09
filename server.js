@@ -136,6 +136,7 @@ app.put('/api/bows/:id', controllers.bow.update);
 
 app.delete('/api/users/:userId/bows/:id', controllers.userBows.destroy);
 app.post('/api/users/:userId/bows', controllers.userBows.create);
+app.put('/api/users/:userId/bows/:id', controllers.userBows.update);
 
 // listen on port 3000
 app.listen(process.env.PORT || 3000, function () {

@@ -119,16 +119,12 @@ function updateBow(event) {
   var bowId = $(this).closest('.bow').data('bow-id');
   console.log(bowId);
 
-  // doesnt' work but keep trying ;)
-  $('#date-' + bowId).datetimepicker({
-      format: 'MM/DD/YYYY'
-  });
-
+  var userId = "5707f38945f4c26d3aa09a7c";
   var updateInput = $('#update-' + bowId + " form").serialize();
   console.log(updateInput);
   $.ajax({
     method:'PUT',
-    url: '/api/bows/' + bowId,
+    url: '/api/users/' + userId + '/bows/' + bowId,
     data: updateInput,
     success: handleUpdatedBow,
     error: function(err) { console.log('there was an error updating bow', err); }
