@@ -61,9 +61,11 @@ $(function(){
 function addBowSubmit(event) {
   event.preventDefault();
 
+  //hard-coding userId until I find a way to isolate it
+  userId = "5707f38945f4c26d3aa09a7c";
   $.ajax ({
     method: 'POST',
-    url: "/api/bows",
+    url: "/api/users/" + userId + '/bows',
     data: $newBowForm.serialize(),
     success: renderBow,
     error: function(err) {
