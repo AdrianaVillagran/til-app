@@ -2,8 +2,8 @@
 var $bowList,
     bowTemplate,
     $newBowForm,
-    $updateForm,
-    userId = "5707f38945f4c26d3aa09a7c";
+    $updateForm;
+    // userId = "5707f38945f4c26d3aa09a7c";
 
 
 $(function(){
@@ -24,7 +24,7 @@ $(function(){
   //GET call for bows data
   $.ajax({
     method: 'GET',
-    url: '/api/users/' + userId + "/bows",
+    url: '/api/bows',
     success: handleBowSuccess,
     error: function (err) {
       console.log("There was an error getting bows:", err);
@@ -67,7 +67,7 @@ function addBowSubmit(event) {
 
   $.ajax ({
     method: 'POST',
-    url: "/api/users/" + userId + '/bows',
+    url: "/api/bows",
     data: $newBowForm.serialize(),
     success: renderBow,
     error: function(err) {

@@ -13,9 +13,9 @@ function index(req, res) {
 
 
 function create(req, res) {
-  if(!req.user) {
-    return res.sendStatus(401);
-  }
+  // if(!req.user) {
+  //   return res.sendStatus(401);
+  // }
 
   var userId = req.params.userId;
 
@@ -80,9 +80,9 @@ function destroy(req, res) {
 }
 
 function update(req, res) {
-  if(!req.user) {
-    return res.sendStatus(401);
-  }
+  // if(!req.user) {
+  //   return res.sendStatus(401);
+  // }
 
   var userId = req.params.userId;
   var bowId = req.params.id;

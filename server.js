@@ -18,7 +18,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 // middleware for auth
 app.use(cookieParser());
 app.use(session({
-  secret: 'supersecretkey', // change this!
+  secret: 'hedgehog fuzz', // change this!
   resave: false,
   saveUninitialized: false
 }));
@@ -76,9 +76,9 @@ app.get('/login', function (req, res) {
 // AUTH ENDPOINTS
  // sign up and create new user
 app.post('/signup', function (req, res) {
- if(!req.user) {
-   return res.redirect('/');
- }
+ // if(!req.user) {
+ //   return res.redirect('/');
+ // }
 
  var new_user = new User({ username: req.body.username });
  User.register(new_user, req.body.password,
@@ -96,21 +96,21 @@ app.post('/signup', function (req, res) {
 });
 
 // app.get('/gimmie-cookie', function(req, res){
-//   res.cookie("OmNom", "fo-real")
-//   res.cookie("another", "1")
-//   res.send("Huzzah")
-// })
+//   res.cookie("OmNom", "fo-real");
+//   res.cookie("another", "1");
+//   res.send("Huzzah");
+// });
 //
 // app.get('/eat-cookie', function(req, res){
 //   // res.clearCookie('OmNom')
 //   // res.clearCookie('another')
-//   res.cookie("another", parseInt(req.cookies.another) + 1)
-//   res.send("<a href='/eat-cookie'>Eat another</a>")
-// })
+//   res.cookie("another", parseInt(req.cookies.another) + 1);
+//   res.send("<a href='/eat-cookie'>Eat another</a>");
+// });
 //
 // app.get("/api/me", function(req, res){
 //   res.json(req.user);
-// })
+// });
 
 // log in user
 app.post('/login', passport.authenticate('local'), function (req, res) {
@@ -130,9 +130,9 @@ app.get('/logout', function (req, res) {
 
 app.get('/api', controllers.api.index);
 app.get('/api/bows', controllers.bow.index);
-app.post('/api/bows', controllers.bow.create);
-app.delete('/api/bows/:id', controllers.bow.destroy);
-app.put('/api/bows/:id', controllers.bow.update);
+// app.post('/api/bows', controllers.bow.create);
+// app.delete('/api/bows/:id', controllers.bow.destroy);
+// app.put('/api/bows/:id', controllers.bow.update);
 
 app.get('/api/users', controllers.userBows.index);
 app.delete('/api/users/:userId/bows/:id', controllers.userBows.destroy);
