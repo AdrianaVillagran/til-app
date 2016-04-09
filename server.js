@@ -55,11 +55,17 @@ app.get('/', function homepage (req, res) {
 
 // show signup view
 app.get('/signup', function (req, res) {
-  res.render('signup'); // you can also use res.sendFile
+  if(req.user) {
+    res.redirect('/');
+  }
+  res.render('signup');
 });
 
 // show login view
 app.get('/login', function (req, res) {
+  if(req.user) {
+    res.redirect('/');
+  }
   res.render('login'); // you can also use res.sendFile
 });
 
@@ -67,17 +73,22 @@ app.get('/login', function (req, res) {
  * JSON Endpoints
  */
 
+// AUTH ENDPOINTS
  // sign up and create new user
 app.post('/signup', function (req, res) {
+ if(!req.user) {
+   return res.redirect('/');
+ }
+
  var new_user = new User({ username: req.body.username });
  User.register(new_user, req.body.password,
    function (err, newUser) {
      if (err){
-       console.log(err)
-       return res.status(400)//.json({error: err})
+       console.log(err);
+       return res.status(400);//.json({error: err})
      }
-
      passport.authenticate('local')(req, res, function() {
+       console.log('Signup success');
        res.redirect('/');
      });
    }
@@ -114,6 +125,8 @@ app.get('/logout', function (req, res) {
   console.log("AFTER logout", req.user);
   res.redirect('/');
 });
+
+// JSON API ENDPOINTS / ROUTES
 
 app.get('/api', controllers.api.index);
 app.get('/api/bows', controllers.bow.index);

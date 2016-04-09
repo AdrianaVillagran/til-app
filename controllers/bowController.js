@@ -14,6 +14,10 @@ function index(req, res) {
 
 
 function create(req, res) {
+  if(!req.user) {
+    return res.sendStatus(401);
+  }
+
   db.Bow.create(req.body, function(err, bow) {
      if (err) { console.log('error creating bow', err); }
      console.log("New bow created!", bow);
@@ -28,6 +32,9 @@ function show(req, res) {
 }
 
 function destroy(req, res) {
+  if (!req.user) {
+    return res.sendStatus(401);
+  }
   var bowId = req.params.id;
   db.Bow.findOneAndRemove({_id: bowId}, function (err, foundBow) {
     if(err) { console.log('There was an error', err); }
@@ -36,6 +43,10 @@ function destroy(req, res) {
 }
 
 function update(req, res) {
+  if(!req.user) {
+    return res.sendStatus(401);
+  }
+
   var bowId = req.params.id;
   db.Bow.findById(bowId, function(err, foundBow) {
     if(err) {
