@@ -33,9 +33,9 @@ function show(req, res) {
 }
 
 function destroy(req, res) {
-  if (!req.user) {
-    return res.sendStatus(401);
-  }
+  // if (!req.user) {
+  //   return res.sendStatus(401);
+  // }
   var bowId = req.params.id;
   db.Bow.findOneAndRemove({_id: bowId}, function (err, foundBow) {
     if(err) { console.log('There was an error', err); }
@@ -44,9 +44,9 @@ function destroy(req, res) {
 }
 
 function update(req, res) {
-  if(!req.user) {
-    return res.sendStatus(401);
-  }
+  // if(!req.user) {
+  //   return res.sendStatus(401);
+  // }
 
   var bowId = req.params.id;
   db.Bow.findById(bowId, function(err, foundBow) {
