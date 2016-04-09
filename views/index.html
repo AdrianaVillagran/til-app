@@ -48,7 +48,7 @@
     <div class="jumbotron">
       <div id="cover-title" class="container">
         <h1>T.I.L.</h1>
-        <h3>A place where you can drop your daily beads of wisdom</h3>
+        <h3>A place where you can store your daily beads of wisdom</h3>
       </div>
     </div>
 
@@ -119,11 +119,11 @@
              <script id="wisdom-template" type="text/x-handlebars-template">
 
               <div class="panel panel-default bow" data-bow-id="{{_id}}">
-                <div class="panel-heading" align="right">Posted by {{username}} on {{date}}</div>
+                <div class="panel-heading" align="right">Posted {{username}} on {{date}}</div>
                   <div class="panel-body">
                     <h3>{{beadOfWisdom}}</h3>
                     <p>{{description}}</p>
-                    <p><strong><a href"{{resource.url}}">Resource</a></strong></p>
+                    <p><strong><a href"{{resourceUrl}}">Resource</a></strong></p>
                   </div>
                   <div class="panel-footer">
                     <button class='btn btn-sm btn-default delete-bow pull-right'>
@@ -169,7 +169,9 @@
 
                   </div>
                 </div>
+                
               </script>
+
         </div>
 <!-- End of Handlebars template -->
       </div>

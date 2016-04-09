@@ -13,6 +13,27 @@ var sampleBeads = [{
                       description:"Fun facty fact stuff",
                       resourceUrl: "http://www.npr.org/2013/08/10/209178988/the-hackers",
                       topic: "science"
+                    },
+                    {
+                      beadOfWisdom: "My dog can read my mind!",
+                      date: "04/09/2016",
+                      description:"Fun facty fact stuff",
+                      resourceUrl: "http://www.npr.org/2013/08/10/209178988/the-hackers",
+                      topic: "science"
+                    },
+                    {
+                      beadOfWisdom: "My dog can read my mind!",
+                      date: "04/09/2016",
+                      description:"Fun facty fact stuff",
+                      resourceUrl: "http://www.npr.org/2013/08/10/209178988/the-hackers",
+                      topic: "science"
+                    },
+                    {
+                      beadOfWisdom: "My dog can read my mind!",
+                      date: "04/09/2016",
+                      description:"Fun facty fact stuff",
+                      resourceUrl: "http://www.npr.org/2013/08/10/209178988/the-hackers",
+                      topic: "science"
                     }];
 
 db.Bow.remove({}, function(err, bows){

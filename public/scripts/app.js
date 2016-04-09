@@ -2,7 +2,8 @@
 var $bowList,
     bowTemplate,
     $newBowForm,
-    $updateForm;
+    $updateForm,
+    userId = "5707f38945f4c26d3aa09a7c";
 
 
 $(function(){
@@ -23,7 +24,7 @@ $(function(){
   //GET call for bows data
   $.ajax({
     method: 'GET',
-    url: '/api/bows',
+    url: '/api/users/' + userId + "/bows",
     success: handleBowSuccess,
     error: function (err) {
       console.log("There was an error getting bows:", err);
@@ -62,7 +63,7 @@ function addBowSubmit(event) {
   event.preventDefault();
 
   //hard-coding userId until I find a way to isolate it
-  userId = "5707f38945f4c26d3aa09a7c";
+
 
   $.ajax ({
     method: 'POST',
@@ -98,7 +99,7 @@ function deleteBow(event){
   var bowId = $(this).closest('.bow').data('bow-id');
   console.log(bowId);
   $('div[data-bow-id=' + bowId + ']').remove();
-  userId = "5707f38945f4c26d3aa09a7c";
+
   $.ajax ({
     method: 'DELETE',
     url: '/api/users/' + userId + "/bows/" + bowId,
@@ -119,7 +120,6 @@ function updateBow(event) {
   var bowId = $(this).closest('.bow').data('bow-id');
   console.log(bowId);
 
-  var userId = "5707f38945f4c26d3aa09a7c";
   var updateInput = $('#update-' + bowId + " form").serialize();
   console.log(updateInput);
   $.ajax({

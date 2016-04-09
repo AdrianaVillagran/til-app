@@ -1,7 +1,13 @@
 var db = require('../models');
 
 function index(req, res) {
-
+  db.User.find({}, function (err, users) {
+    if (err) {
+      console.log("error GETting users", err);
+      res.status(404);
+    }
+    res.status(200).json(users);
+  });
 
 }
 
@@ -34,7 +40,15 @@ function create(req, res) {
 
 
 function show(req, res) {
-
+  var userId = req.params.userId;
+  db.User.findById(userId, function(err, foundUser) {
+    if(err) {
+      console.log('error finding user', err);
+      res.status(404);
+    }
+    var foundBows = foundUser.bows;
+    res.json(foundUser.bows);
+  });
 
 
 }
