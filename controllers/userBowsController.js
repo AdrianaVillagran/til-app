@@ -40,10 +40,34 @@ function show(req, res) {
 }
 
 function destroy(req, res) {
+  if(!req.user) {
+    return res.sendStatus(401);
+  }
 
+  var userId = req.params.userId;
+  var bowId = req.params.id;
+
+  db.User.findById(userId, function(err, foundUser) {
+    if(err) {
+      console.log('error finding user', err);
+      res.status(404);
+    }
+    var foundBow = foundUser.bows.id(bowId);
+
+    foundBow.remove();
+    foundUser.save(function (err, savedUser) {
+      if (err) {
+        console.log('error saving user after delete', err);
+        res.status(500);
+      }
+      res.json(foundBow);
+    });
+  });
 }
 
 function update(req, res) {
+
+  
 
 }
 

@@ -63,6 +63,7 @@ function addBowSubmit(event) {
 
   //hard-coding userId until I find a way to isolate it
   userId = "5707f38945f4c26d3aa09a7c";
+
   $.ajax ({
     method: 'POST',
     url: "/api/users/" + userId + '/bows',
@@ -97,14 +98,15 @@ function deleteBow(event){
   var bowId = $(this).closest('.bow').data('bow-id');
   console.log(bowId);
   $('div[data-bow-id=' + bowId + ']').remove();
+  userId = "5707f38945f4c26d3aa09a7c";
   $.ajax ({
     method: 'DELETE',
-    url: '/api/bows/' + bowId,
+    url: '/api/users/' + userId + "/bows/" + bowId,
     success: function(json) {
-      console.log("album successfully deleted");
+      console.log("bow successfully deleted");
     },
     error: function(err) {
-      console.log("the album was not successfully deleted", err);
+      console.log("the bow was not successfully deleted", err);
     }
   });
 }
