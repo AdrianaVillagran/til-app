@@ -31,20 +31,6 @@ $(function(){
     }
   });
 
-  // //navbar sign up button opens signupModal
-  // $('.sign-up').on('click', function(event){
-  //   event.preventDefault();
-  //   console.log('sign up button clicked!');
-  //   $('#signupModal').modal();
-  // });
-  //
-  // //navbar login  button opens loginModal
-  // $('.login').on('click', function(event){
-  //   event.preventDefault();
-  //   console.log('login button clicked!');
-  //   $('#loginModal').modal();
-  // });
-
 
   //addBow click event
   $('#addBow').on('submit', addBowSubmit);
@@ -79,11 +65,20 @@ function addBowSubmit(event) {
   $newBowForm[0].reset();
 }
 
-//handles bow GET success
+// handles bow GET success. result of GET request is an array of bow arrays by all users
 function handleBowSuccess(bows) {
-    bows.forEach(function(bow) {
-      renderBow(bow);
-    });
+    console.log(bows[0]);
+    //filters through array of bow arrays
+    for(var i = 0; i<bows.length; i++) {
+      sortBows(bows[i]);
+    }
+}
+
+// renders bow by bow
+function sortBows(arr) {
+  arr.forEach(function(bow) {
+    renderBow(bow);
+  });
 }
 
 // takes a single bow and renders it to the top of the page
