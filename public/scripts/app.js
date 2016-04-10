@@ -47,13 +47,19 @@ $(function(){
 //handles addBow POST call
 function addBowSubmit(event) {
   event.preventDefault();
-
-  //hard-coding userId until I find a way to isolate it
-
-
+  var username = $('#username').val();
+  var date = $('#date').val();
+  var newBowInput = {  date: $('#date').val(),
+                  username: $('#username').val(),
+                  beadOfWisdom: $('#beadOfWisdom').val(),
+                  topic: $('#topic').val(),
+                  resourceUrl: $('#resourceUrl').val(),
+                  description: $('#description').val()
+                };
+  console.log(newBowInput);
   $.ajax ({
     method: 'POST',
-    url: "/api/bows",
+    url: "/api/users/" + username + "/bows",
     data: $newBowForm.serialize(),
     success: renderBow,
     error: function(err) {
@@ -67,7 +73,6 @@ function addBowSubmit(event) {
 
 // handles bow GET success. result of GET request is an array of bow arrays by all users
 function handleBowSuccess(bows) {
-    console.log(bows[0]);
     //filters through array of bow arrays
     for(var i = 0; i<bows.length; i++) {
       sortBows(bows[i]);
@@ -112,6 +117,7 @@ function updateBow(event) {
   event.preventDefault();
 
   console.log('edit bow button clicked!');
+  
   var bowId = $(this).closest('.bow').data('bow-id');
   console.log(bowId);
 
