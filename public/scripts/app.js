@@ -9,17 +9,22 @@ var $bowList,
 $(function(){
   console.log('sanity check');
 
+  //function to see if there is a user logged in
   $.ajax({
     method: 'GET',
     url: '/loggedin',
     success: function(json) {
-      console.log(json);
+      console.log(parseInt(json));
+      if(parseInt(json) === 0) {
+        console.log("!user");
+      }
     },
     error: function(err) {
       console.log("error checking for logged in user");
     }
   });
 
+  //formats datetimepicker button on newBowForm
   $('#datetimepicker1').datetimepicker({
       format: 'MM/DD/YYYY'
   });
@@ -46,13 +51,14 @@ $(function(){
   //addBow click event
   $('#addBow').on('submit', addBowSubmit);
 
-  //delete bow click event
+  //delete-bow click event
   $bowList.on('click', '.delete-bow', deleteBow);
 
-  // update bow click event
+  // edit-bow click event
   $bowList.on('click', '.edit-bow', updateBow);
 
 });
+//end of document ready
 
 
 //handles addBow POST call
