@@ -20,7 +20,15 @@ function create(req, res) {
   var username = req.params.username;
   console.log(username);
 
-  var newBow = new db.Bow(req.body);
+  var newBow = new db.Bow({
+                            username: req.body.username,
+                            date: req.body.date,
+                            beadOfWisdom: req.body.beadOfWisdom,
+                            description: req.body.description,
+                            topic: req.body.topic,
+                            resourceUrl: req.body.resourceUrl
+                          });
+  console.log(newBow);
 
   db.User.findOne({username: username}, function(err, foundUser) {
     if(err) {

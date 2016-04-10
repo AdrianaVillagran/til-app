@@ -63,12 +63,19 @@ function addBowSubmit(event) {
   event.preventDefault();
 
   //hard-coding userId until I find a way to isolate it
-
+  var newBow = {  date: $('#date').val(),
+                  username: $('#username').val(),
+                  beadOfWisdom: $('#beadOfWisdom').val(),
+                  topic: $('#topic').val(),
+                  resourceUrl: $('#resourceUrl').val(),
+                  description: $('#description').val()
+                };
+    console.log(newBow);
 
   $.ajax ({
     method: 'POST',
     url: "/api/users/avillagran/bows",
-    data: $newBowForm.serialize(),
+    data: newBow,
     success: renderBow,
     error: function(err) {
       console.log("Oops, there was an error posting bow!",err);
