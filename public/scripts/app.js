@@ -9,6 +9,17 @@ var $bowList,
 $(function(){
   console.log('sanity check');
 
+  $.ajax({
+    method: 'GET',
+    url: '/loggedin',
+    success: function(json) {
+      console.log(json);
+    },
+    error: function(err) {
+      console.log("error checking for logged in user");
+    }
+  });
+
   $('#datetimepicker1').datetimepicker({
       format: 'MM/DD/YYYY'
   });
@@ -117,7 +128,7 @@ function updateBow(event) {
   event.preventDefault();
 
   console.log('edit bow button clicked!');
-  
+
   var bowId = $(this).closest('.bow').data('bow-id');
   console.log(bowId);
 

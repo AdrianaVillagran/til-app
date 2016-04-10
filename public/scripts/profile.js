@@ -84,7 +84,8 @@ function addBowSubmit(event) {
   event.preventDefault();
 
   //hard-coding userId until I find a way to isolate it
-  var newBow = {  date: $('#date').val(),
+  var newBow = {
+                  date: $('#date').val(),
                   username: $('#username').val(),
                   beadOfWisdom: $('#beadOfWisdom').val(),
                   topic: $('#topic').val(),

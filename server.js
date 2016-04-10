@@ -112,6 +112,11 @@ app.get("/api/me", function(req, res){
   res.json(req.user);
 });
 
+//function to check if user is logged in
+app.get('/loggedin', function(req, res) {
+    res.send(req.isAuthenticated() ? req.user : '0');
+});
+
 // log in user
 app.post('/login', passport.authenticate('local'), function (req, res) {
   console.log(req.user.username);
