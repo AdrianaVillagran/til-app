@@ -9,9 +9,9 @@ var $bowList,
 $(function(){
   console.log('sanity check');
 
-  // $('#datetimepicker1').datetimepicker({
-  //     format: 'MM/DD/YYYY'
-  // });
+  $('#datetimepicker1').datetimepicker({
+      format: 'MM/DD/YYYY'
+  });
 
   // compiles Handlebars
   var bowSource = $('#wisdom-template').html();
@@ -129,7 +129,7 @@ function updateBow(event) {
     success: handleUpdatedBow,
     error: function(err) { console.log('there was an error updating bow', err); }
   });
-  //$('#update-' + bowId + " form")[0].reset();
+
 
 }
 

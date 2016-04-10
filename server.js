@@ -130,15 +130,14 @@ app.get('/logout', function (req, res) {
 
 app.get('/api', controllers.api.index);
 app.get('/api/bows', controllers.bow.index);
-// app.post('/api/bows', controllers.bow.create);
-// app.delete('/api/bows/:id', controllers.bow.destroy);
-// app.put('/api/bows/:id', controllers.bow.update);
+
 
 app.get('/api/users', controllers.userBows.index);
+app.get('/api/users/:username/bows', controllers.userBows.show);
 app.delete('/api/users/:username/bows/:id', controllers.userBows.destroy);
 app.post('/api/users/:username/bows', controllers.userBows.create);
 app.put('/api/users/:username/bows/:id', controllers.userBows.update);
-app.get('/api/users/:username/bows', controllers.userBows.show);
+
 
 // listen on port 3000
 app.listen(process.env.PORT || 3000, function () {

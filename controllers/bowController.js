@@ -2,13 +2,17 @@ var db = require('../models');
 
 // GET /api/bows
 function index(req, res) {
+  db.User.find({}, function (err, users) {
+    if (err) { res.status(404); }
 
-  db.Bow.find({}, function (err, bows) {
-    console.log(bows);
-    if(err) {
-      res.status(404).send("Beads of wisdom not found!");
+  // filter through users and isolate all bows
+    var bows = [];
+    for(var i=0; i < users.length; i++) {
+      if(users[i].bows.length>0) {
+        bows.push(users[i].bows);
+      }
     }
-    res.status(200).json(bows);
+    res.json(bows);
   });
 
 }
