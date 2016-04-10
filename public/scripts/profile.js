@@ -32,23 +32,23 @@ $(function(){
     method: 'GET',
     url: '/api/me',
     success: function getUserData(user) {
-      console.log(user.username);
+      console.log("Username: "  + user.username);
       username = user.username;
-      console.log(typeof username);
+      $.ajax({
+        method: 'GET',
+        url: '/api/users/' + username + '/bows',
+        success: handleBowSuccess,
+        error: function (err) {
+          console.log("There was an error getting bows:", err);
+        }
+      });
     },
     error: function handleUserError(err) {
       console.log(err);
     }
   });
 
-  $.ajax({
-    method: 'GET',
-    url: '/api/users/' + username + '/bows',
-    success: handleBowSuccess,
-    error: function (err) {
-      console.log("There was an error getting bows:", err);
-    }
-  });
+
 
 
   // //navbar sign up button opens signupModal
@@ -91,7 +91,7 @@ function addBowSubmit(event) {
                   description: $('#description').val()
                 };
     console.log(newBow);
-
+    console.log("username: " +  username);
   $.ajax ({
     method: 'POST',
     url: "/api/users/" + username + "/bows",
@@ -108,7 +108,9 @@ function addBowSubmit(event) {
 
 //handles bow GET success
 function handleBowSuccess(bows) {
+  console.log('handleBowSuccess() ...');
     bows.forEach(function(bow) {
+      console.log("We've successfully handledBowSuccess!!!");
       renderBow(bow);
     });
 }
