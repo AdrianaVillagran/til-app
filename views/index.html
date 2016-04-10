@@ -8,15 +8,15 @@
 
     <!-- STYLESHEETS -->
     <link rel="stylesheet" href="vendor/bootstrap/dist/css/bootstrap.min.css">
-    <!-- <link rel="stylesheet" href="/vendor/eonasdan-bootstrap-datetimepicker/build/css/bootstrap-datetimepicker.min.css"> -->
+    <link rel="stylesheet" href="/vendor/eonasdan-bootstrap-datetimepicker/build/css/bootstrap-datetimepicker.min.css">
     <link rel="stylesheet" href="styles/styles.css">
 
     <!-- VENDOR SCRIPTS -->
     <script src="/vendor/jQuery/dist/jquery.min.js"></script>
-    <!-- <script src="/vendor/moment/min/moment.min.js"></script> -->
+    <script src="/vendor/moment/min/moment.min.js"></script>
     <script src="/vendor/bootstrap/dist/js/bootstrap.min.js"></script>
     <script src="/vendor/handlebars/handlebars.min.js"></script>
-    <!-- <script type="text/javascript" src="/vendor/eonasdan-bootstrap-datetimepicker/build/js/bootstrap-datetimepicker.min.js"></script> -->
+    <script type="text/javascript" src="/vendor/eonasdan-bootstrap-datetimepicker/build/js/bootstrap-datetimepicker.min.js"></script>
 
 
     <!-- APPLICATION SCRIPTS -->
@@ -38,7 +38,6 @@
         </div>
         <div id="navbar" class="navbar-collapse collapse">
           <form class="navbar-form navbar-right">
-            <a href="/signup" type="submit" class="btn btn-default nav-button sign-up">Sign Up</a>
             <a href="/login" type="submit" class="btn btn-default nav-button login">Login</a>
             <a href="/logout" type="submit" class="btn btn-default nav-button">Logout</a>
           </form>
@@ -48,7 +47,7 @@
     <div class="jumbotron">
       <div id="cover-title" class="container">
         <h1>T.I.L.</h1>
-        <h3>A place where you can store your daily beads of wisdom</h3>
+        <h3>A place where you can drop your daily beads of wisdom</h3>
       </div>
     </div>
 
@@ -69,8 +68,8 @@
           </div>
           <div class="col-sm-4 col-sm-offset-3">
             <button type="submit" class="btn btn-primary pull-right"
-            data-toggle="collapse" data-target="#addBow" aria-expanded="false"
-            aria-controls="addBow">Drop your knowledge!</button>
+            data-toggle="collapse" data-target="#signup" aria-expanded="false"
+            aria-controls="signup">Sign up to start dropping knowlege!</button>
           </div>
         </div>
       </div>
@@ -79,37 +78,20 @@
         <div class="col-sm-8 col-sm-offset-2">
 
           <!-- Collapsible form to add a beadOfWisdom -->
-          <div class="collapse" id="addBow">
+          <div class="collapse" id="signup">
             <hr>
-             <form>
-               <div class="row">
-                 <div class="col-sm-8">
-                   <label for="beadOfWisdom">Bead of Wisdom</label>
-                   <input type="text" name="beadOfWisdom" class="form-control" placeholder="What you learned...">
-                 </div>
-                 <div class="col-sm-4">
-                   <label for="date">Date</label>
-                   <input type="text" name="date" class="form-control" placeholder="mm/dd/yyyy">
-                 </div>
-                 <div class="col-sm-12">
-                   <label for="description">Description</label>
-                   <input type="text" name="description" class="form-control" placeholder="200 character limit">
-                 </div>
-                 <div class="col-sm-6">
-                   <label for="topic">Topic</label>
-                   <input type="text" name="topic" class="form-control" placeholder="">
-                 </div>
-                 <div class="col-sm-6">
-                   <label for="resourceUrl">Resource URL</label>
-                   <input type="text" name="resourceUrl" class="form-control" placeholder="">
-                 </div>
-               </div>
-                 <br>
-                 <div>
-                   <input type="submit" class="btn btn-block btn-info" value="Submit">
-                 </div>
-               <hr>
-           </form>
+            <form method="POST" action="/signup">
+              <div class="form-group">
+                <input type="text" name="username" class="form-control" placeholder="Username" autofocus>
+              </div>
+              <div class="form-group">
+                <input type="password" name="password" class="form-control" placeholder="Password">
+              </div>
+              <div class="form-group">
+                <input type="submit" class="btn btn-block btn-primary" value="Sign Up">
+              </div>
+            </form>
+            <hr>
          </div>
       <!-- END OF addBow form -->
 

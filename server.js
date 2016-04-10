@@ -60,7 +60,7 @@ app.get('/profile', function profilePage (req, res) {
 // show signup view
 app.get('/signup', function (req, res) {
   if(req.user) {
-    res.redirect('/');
+    res.redirect('/profile');
   }
   res.render('signup');
 });

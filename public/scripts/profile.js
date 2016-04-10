@@ -1,5 +1,6 @@
 /*
 NOTES: might not need to ask for username in form after adding /api/me ajax call
+if no resource then don't post resource (handlebars if statement)
 */
 
 
@@ -11,7 +12,7 @@ var $bowList,
     username;
 
 
-
+// DOCUMENT READY
 $(function(){
   console.log('sanity check');
 

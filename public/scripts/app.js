@@ -124,7 +124,7 @@ function updateBow(event) {
   console.log(updateInput);
   $.ajax({
     method:'PUT',
-    url: '/api/users/' + userId + '/bows/' + bowId,
+    url: '/api/users/' + username + '/bows/' + bowId,
     data: updateInput,
     success: handleUpdatedBow,
     error: function(err) { console.log('there was an error updating bow', err); }
