@@ -1,8 +1,14 @@
+/*
+NOTES: might not need to ask for username in form after adding /api/me ajax call
+*/
+
+
 // global variables
 var $bowList,
     bowTemplate,
     $newBowForm,
-    $updateForm;
+    $updateForm,
+    username;
 
 
 
@@ -24,12 +30,26 @@ $(function(){
   //GET call for bows data
   $.ajax({
     method: 'GET',
-    url: '/api/users/avillagran/bows',
+    url: '/api/me',
+    success: function getUserData(user) {
+      console.log(user.username);
+      username = user.username;
+      console.log(typeof username);
+    },
+    error: function handleUserError(err) {
+      console.log(err);
+    }
+  });
+
+  $.ajax({
+    method: 'GET',
+    url: '/api/users/' + username + '/bows',
     success: handleBowSuccess,
     error: function (err) {
       console.log("There was an error getting bows:", err);
     }
   });
+
 
   // //navbar sign up button opens signupModal
   // $('.sign-up').on('click', function(event){
@@ -74,7 +94,7 @@ function addBowSubmit(event) {
 
   $.ajax ({
     method: 'POST',
-    url: "/api/users/avillagran/bows",
+    url: "/api/users/" + username + "/bows",
     data: newBow,
     success: renderBow,
     error: function(err) {
@@ -109,7 +129,7 @@ function deleteBow(event){
 
   $.ajax ({
     method: 'DELETE',
-    url: '/api/users/avillagran/bows/' + bowId,
+    url: '/api/users/' + username + '/bows/' + bowId,
     success: function(json) {
       console.log("bow successfully deleted");
     },
@@ -131,7 +151,7 @@ function updateBow(event) {
   console.log(updateInput);
   $.ajax({
     method:'PUT',
-    url: '/api/users/avillagran/bows/' + bowId,
+    url: '/api/users/' + username + '/bows/' + bowId,
     data: updateInput,
     success: handleUpdatedBow,
     error: function(err) { console.log('there was an error updating bow', err); }

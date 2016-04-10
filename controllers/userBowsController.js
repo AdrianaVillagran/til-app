@@ -104,9 +104,10 @@ function update(req, res) {
     }
 
     var foundBow = foundUser.bows.id(bowId);
+    foundBow.date = foundBow.date;
+    foundBow.username = foundBow.username;
     foundBow.beadOfWisdom = req.body.beadOfWisdom;
     foundBow.description = req.body.description;
-    foundBow.date = foundBow.date;
     foundBow.resourceUrl= req.body.resourceUrl;
     foundBow.topic = req.body.topic;
 

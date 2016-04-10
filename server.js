@@ -80,37 +80,33 @@ app.get('/login', function (req, res) {
 // AUTH ENDPOINTS
  // sign up and create new user
 app.post('/signup', function (req, res) {
- // if(!req.user) {
- //   return res.redirect('/');
- // }
-
  var new_user = new User({ username: req.body.username });
  User.register(new_user, req.body.password,
    function (err, newUser) {
      if (err){
        console.log(err);
-       return res.status(400);//.json({error: err})
+       return res.status(400);
      }
      passport.authenticate('local')(req, res, function() {
        console.log('Signup success');
-       res.redirect('/');
+       res.redirect('/profile');
      });
    }
  );
 });
 
-app.get('/gimmie-cookie', function(req, res){
-  res.cookie("OmNom", "fo-real");
-  res.cookie("another", "1");
-  res.send("Huzzah");
-});
+// app.get('/gimmie-cookie', function(req, res){
+//   res.cookie("OmNom", "fo-real");
+//   res.cookie("another", "1");
+//   res.send("Huzzah");
+// });
 
-app.get('/eat-cookie', function(req, res){
-  // res.clearCookie('OmNom')
-  // res.clearCookie('another')
-  res.cookie("another", parseInt(req.cookies.another) + 1);
-  res.send("<a href='/eat-cookie'>Eat another</a>");
-});
+// app.get('/eat-cookie', function(req, res){
+//   // res.clearCookie('OmNom')
+//   // res.clearCookie('another')
+//   res.cookie("another", parseInt(req.cookies.another) + 1);
+//   res.send("<a href='/eat-cookie'>Eat another</a>");
+// });
 
 app.get("/api/me", function(req, res){
   res.json(req.user);
