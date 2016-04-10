@@ -67,7 +67,7 @@ function addBowSubmit(event) {
 
   $.ajax ({
     method: 'POST',
-    url: "/api/users/avillagra/bows",
+    url: "/api/users/avillagran/bows",
     data: $newBowForm.serialize(),
     success: renderBow,
     error: function(err) {

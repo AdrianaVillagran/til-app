@@ -18,6 +18,7 @@ function create(req, res) {
   // }
 
   var username = req.params.username;
+  console.log(username);
 
   var newBow = new db.Bow(req.body);
 
@@ -40,7 +41,7 @@ function create(req, res) {
 
 
 function show(req, res) {
-  var userame = req.params.username;
+  var username = req.params.username;
   db.User.findOne({username: username}, function(err, foundUser) {
     if(err) {
       console.log('error finding user', err);

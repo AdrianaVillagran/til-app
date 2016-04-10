@@ -68,7 +68,7 @@ app.get('/signup', function (req, res) {
 // show login view
 app.get('/login', function (req, res) {
   if(req.user) {
-    res.redirect('/');
+    res.redirect('/profile');
   }
   res.render('login'); // you can also use res.sendFile
 });
@@ -119,7 +119,7 @@ app.get("/api/me", function(req, res){
 // log in user
 app.post('/login', passport.authenticate('local'), function (req, res) {
   console.log(req.user.username);
-  res.redirect('/');
+  res.redirect('/profile');
 });
 
 // log out user
