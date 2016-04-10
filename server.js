@@ -53,6 +53,10 @@ app.get('/', function homepage (req, res) {
   res.sendFile(__dirname + '/views/index.html');
 });
 
+app.get('/profile', function profilePage (req, res) {
+  res.sendFile(__dirname + '/views/profile.html');
+});
+
 // show signup view
 app.get('/signup', function (req, res) {
   if(req.user) {
