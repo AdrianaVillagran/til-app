@@ -34,21 +34,21 @@ $(function(){
     success: function getUserData(user) {
       console.log(user.username);
       username = user.username;
-      console.log(typeof username);
+      $.ajax({
+        method: 'GET',
+        url: '/api/users/' + username + '/bows',
+        success: handleBowSuccess,
+        error: function (err) {
+          console.log("There was an error getting bows:", err);
+        }
+      });
     },
     error: function handleUserError(err) {
       console.log(err);
     }
   });
 
-  $.ajax({
-    method: 'GET',
-    url: '/api/users/' + username + '/bows',
-    success: handleBowSuccess,
-    error: function (err) {
-      console.log("There was an error getting bows:", err);
-    }
-  });
+
 
 
   // //navbar sign up button opens signupModal
@@ -92,6 +92,7 @@ function addBowSubmit(event) {
                 };
     console.log(newBow);
 
+    console.log('username:', username);
   $.ajax ({
     method: 'POST',
     url: "/api/users/" + username + "/bows",

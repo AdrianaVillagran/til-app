@@ -3,7 +3,7 @@ var Schema = mongoose.Schema;
 
 var BowSchema = new Schema({
           beadOfWisdom: String,
-          date: {type: Date, default: Date.now()},
+          date: String,
           description: String,
           resourceUrl: String,
           topic: String,

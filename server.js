@@ -70,7 +70,7 @@ app.get('/login', function (req, res) {
   if(req.user) {
     res.redirect('/profile');
   }
-  res.render('login'); // you can also use res.sendFile
+  res.render('login', {user: JSON.stringify(req.user) + "|| null" }); // you can also use res.sendFile
 });
 
 /*
