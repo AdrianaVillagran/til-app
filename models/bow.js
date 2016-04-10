@@ -6,7 +6,8 @@ var BowSchema = new Schema({
           date: {type: Date, default: Date.now()},
           description: String,
           resourceUrl: String,
-          topic: String
+          topic: String,
+          username: String
         });
 
 var Bow = mongoose.model('Bow', BowSchema);

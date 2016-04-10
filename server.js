@@ -95,22 +95,22 @@ app.post('/signup', function (req, res) {
  );
 });
 
-// app.get('/gimmie-cookie', function(req, res){
-//   res.cookie("OmNom", "fo-real");
-//   res.cookie("another", "1");
-//   res.send("Huzzah");
-// });
-//
-// app.get('/eat-cookie', function(req, res){
-//   // res.clearCookie('OmNom')
-//   // res.clearCookie('another')
-//   res.cookie("another", parseInt(req.cookies.another) + 1);
-//   res.send("<a href='/eat-cookie'>Eat another</a>");
-// });
-//
-// app.get("/api/me", function(req, res){
-//   res.json(req.user);
-// });
+app.get('/gimmie-cookie', function(req, res){
+  res.cookie("OmNom", "fo-real");
+  res.cookie("another", "1");
+  res.send("Huzzah");
+});
+
+app.get('/eat-cookie', function(req, res){
+  // res.clearCookie('OmNom')
+  // res.clearCookie('another')
+  res.cookie("another", parseInt(req.cookies.another) + 1);
+  res.send("<a href='/eat-cookie'>Eat another</a>");
+});
+
+app.get("/api/me", function(req, res){
+  res.json(req.user);
+});
 
 // log in user
 app.post('/login', passport.authenticate('local'), function (req, res) {
@@ -135,10 +135,10 @@ app.get('/api/bows', controllers.bow.index);
 // app.put('/api/bows/:id', controllers.bow.update);
 
 app.get('/api/users', controllers.userBows.index);
-app.delete('/api/users/:userId/bows/:id', controllers.userBows.destroy);
-app.post('/api/users/:userId/bows', controllers.userBows.create);
-app.put('/api/users/:userId/bows/:id', controllers.userBows.update);
-app.get('/api/users/:userId/bows', controllers.userBows.show);
+app.delete('/api/users/:username/bows/:id', controllers.userBows.destroy);
+app.post('/api/users/:username/bows', controllers.userBows.create);
+app.put('/api/users/:username/bows/:id', controllers.userBows.update);
+app.get('/api/users/:username/bows', controllers.userBows.show);
 
 // listen on port 3000
 app.listen(process.env.PORT || 3000, function () {

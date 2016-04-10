@@ -17,11 +17,11 @@ function create(req, res) {
   //   return res.sendStatus(401);
   // }
 
-  var userId = req.params.userId;
+  var username = req.params.username;
 
   var newBow = new db.Bow(req.body);
 
-  db.User.findById(userId, function(err, foundUser) {
+  db.User.findOne({username: username}, function(err, foundUser) {
     if(err) {
       console.log("There was an error finding user", err);
       res.status(404);
@@ -40,8 +40,8 @@ function create(req, res) {
 
 
 function show(req, res) {
-  var userId = req.params.userId;
-  db.User.findById(userId, function(err, foundUser) {
+  var userame = req.params.username;
+  db.User.findOne({username: username}, function(err, foundUser) {
     if(err) {
       console.log('error finding user', err);
       res.status(404);
@@ -58,10 +58,10 @@ function destroy(req, res) {
   //   return res.sendStatus(401);
   // }
 
-  var userId = req.params.userId;
+  var username = req.params.username;
   var bowId = req.params.id;
 
-  db.User.findById(userId, function(err, foundUser) {
+  db.User.findOne({username:username}, function(err, foundUser) {
     if(err) {
       console.log('error finding user', err);
       res.status(404);
@@ -84,11 +84,11 @@ function update(req, res) {
   //   return res.sendStatus(401);
   // }
 
-  var userId = req.params.userId;
+  var username = req.params.username;
   var bowId = req.params.id;
 
 
-  db.User.findOne({_id: userId}, function (err, foundUser) {
+  db.User.findOne({username:username}, function (err, foundUser) {
     if(err) {
       console.log("error finding user to update", err);
       res.send(404);
