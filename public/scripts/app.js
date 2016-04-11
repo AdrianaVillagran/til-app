@@ -3,8 +3,6 @@ var $bowList,
     bowTemplate,
     $newBowForm,
     $updateForm;
-    // userId = "5707f38945f4c26d3aa09a7c";
-
 
 $(function(){
   console.log('sanity check');
@@ -14,9 +12,10 @@ $(function(){
     method: 'GET',
     url: '/loggedin',
     success: function(json) {
-      console.log(parseInt(json));
       if(parseInt(json) === 0) {
         console.log("!user");
+
+        $('#addBow').attr("disabled", "disabled");
       }
     },
     error: function(err) {
