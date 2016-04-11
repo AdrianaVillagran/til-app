@@ -95,18 +95,6 @@ app.post('/signup', function (req, res) {
  );
 });
 
-// app.get('/gimmie-cookie', function(req, res){
-//   res.cookie("OmNom", "fo-real");
-//   res.cookie("another", "1");
-//   res.send("Huzzah");
-// });
-
-// app.get('/eat-cookie', function(req, res){
-//   // res.clearCookie('OmNom')
-//   // res.clearCookie('another')
-//   res.cookie("another", parseInt(req.cookies.another) + 1);
-//   res.send("<a href='/eat-cookie'>Eat another</a>");
-// });
 
 app.get("/api/me", function(req, res){
   res.json(req.user);
@@ -139,6 +127,7 @@ app.get('/api/bows', controllers.bow.index);
 
 app.get('/api/users', controllers.userBows.index);
 app.get('/api/users/:username/bows', controllers.userBows.show);
+app.get('/api/users/:username/bows/:date', controllers.userBows.show);
 app.delete('/api/users/:username/bows/:id', controllers.userBows.destroy);
 app.post('/api/users/:username/bows', controllers.userBows.create);
 app.put('/api/users/:username/bows/:id', controllers.userBows.update);

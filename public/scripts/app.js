@@ -14,7 +14,7 @@ $(function(){
     success: function(json) {
       if(parseInt(json) === 0) {
         console.log("!user");
-
+        // following functions change the homepage if the user is not logged in
         $('#addBow').attr("disabled", "disabled");
       }
     },
