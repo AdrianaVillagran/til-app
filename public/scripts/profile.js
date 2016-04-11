@@ -177,6 +177,6 @@ function searchByDate(event) {
     error: function (err) {
       console.log(err);
     }
-
   });
+  $('#search-form')[0].reset();
 }

@@ -201,6 +201,7 @@ function searchByDate(event) {
     }
   });
 
+  $('#search-form')[0].reset();
   $bowList.empty();
 
 }

@@ -52,11 +52,11 @@
     </div>
 
 <!-- End of Jumbotron cover -->
-  <script>console.log(window.user)</script>
     <div class="container">
       <div class="row">
         <div class="col-sm-8 col-sm-offset-2">
           <div class="col-sm-5">
+            <form id="search-form">
             <label for="search">Search by date</label>
             <div class="input-group">
               <input id="search" type="text" name="date" class="form-control" placeholder="MM-DD-YYYY">
@@ -66,6 +66,7 @@
                 </button>
               </span>
             </div>
+          </form>
           </div>
           <div class="col-sm-4 col-sm-offset-3">
             <button type="submit" class="btn btn-primary pull-right"
@@ -135,7 +136,9 @@
                   <div class="panel-body">
                     <h3>{{beadOfWisdom}}</h3>
                     <p>{{description}}</p>
+                    {{#if resourceUrl}}
                     <p><strong><a href="{{resourceUrl}}">Resource</a></strong></p>
+                    {{/if}}
                   </div>
                   <div class="panel-footer">
                     <button class='btn btn-sm btn-default delete-bow pull-right'>
@@ -186,93 +189,10 @@
 
         </div>
 <!-- End of Handlebars template -->
+
       </div>
     </div>
 <!-- End of Container div -->
-
-    <!-- signupModal (not visible until called)-->
-  <div class="modal fade" tabindex="-1" role="dialog" id="signupModal">
-    <div class="modal-dialog">
-      <div class="modal-content">
-        <div class="modal-header">
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-          <h4 class="modal-title">Sign Up</h4>
-        </div>
-        <div class="modal-body">
-
-          <fieldset class='form-horizontal' id="signupForm">
-            <!-- Text input-->
-            <div class="form-group">
-              <label class="col-md-2 control-label" for="email">Email</label>
-              <div class="col-md-2">
-                <input id="email" name="email" type="text" placeholder="" class="form-control input-md" required="">
-              </div>
-            </div>
-            <!-- Text input-->
-            <div class="form-group">
-              <label class="col-md-4 control-label" for="username">Username</label>
-              <div class="col-md-4">
-                <input id="username" name="username" type="text" placeholder="" class="form-control input-md" required="">
-              </div>
-            </div>
-
-            <!-- Text input-->
-            <div class="form-group">
-              <label class="col-md-4 control-label" for="password">Password</label>
-              <div class="col-md-4">
-                <input id="password" name="password" type="text" placeholder="" class="form-control input-md">
-              </div>
-            </div>
-          </fieldset>
-
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
-          <button type="button" class="btn btn-primary" id="signUp">Sign Up</button>
-
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- loginModal -->
-<div class="modal fade" tabindex="-1" role="dialog" id="loginModal">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <h4 class="modal-title">Login</h4>
-      </div>
-      <div class="modal-body">
-
-        <fieldset class='form-horizontal' id="loginForm">
-          <!-- Text input-->
-          <div class="form-group">
-            <label class="col-md-4 control-label" for="username">Username</label>
-            <div class="col-md-4">
-              <input name="username" type="text" placeholder="" class="form-control input-md" required="">
-            </div>
-          </div>
-
-          <!-- Text input-->
-          <div class="form-group">
-            <label class="col-md-4 control-label" for="password">Password</label>
-            <div class="col-md-4">
-              <input name="loginPassword" type="text" placeholder="" class="form-control input-md">
-            </div>
-          </div>
-        </fieldset>
-
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
-        <button type="button" class="btn btn-primary" id="logIn">Login</button>
-
-      </div>
-    </div>
-  </div>
-</div>
-
 
   </body>
 </html>
