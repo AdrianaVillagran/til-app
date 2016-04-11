@@ -1,7 +1,6 @@
 var db = require('../models');
 
 function index(req, res) {
-  console.log("/api/users/avillagran/bows is getting called");
 
   var username = req.params.username;
   db.User.findOne({username: username}, function(err, foundUser) {
@@ -11,7 +10,7 @@ function index(req, res) {
     }
     var foundBows = foundUser.bows;
     res.json(foundUser.bows);
-    console.log(foundUser.bows);
+
   });
 }
 
@@ -53,15 +52,34 @@ function create(req, res) {
 
 
 function show(req, res) {
+  console.log('api/users/username/bows/date is getting called');
   var username = req.params.username;
+  var date = req.params.date;
+  console.log(date);
+
+  // db.User.find()
+  // .where('')
+  // .in([date])
+  // .exec(function (err, bows) {
+  //   if (err) { console.log('error finding matching bows', err); }
+  //   res.json(bows);
+  // });
+
   db.User.findOne({username: username}, function (err, foundUser) {
     if(err) {
       console.log("error finding user", err);
       res.status(404);
     }
-    for (var i = 0; i< foundUser.bows.length; i++) {
-      console.log ('hi');
+    var foundBows = foundUser.bows;
+    var matchingBows = [];
+    console.log(foundBows[0].date);
+    for(var i=0 ; i<foundBows.length ; i++) {
+      if(foundBows[i].date === date) {
+        matchingBows.push(foundBows[i]);
+      }
     }
+    res.json(matchingBows);
+
 
   });
 

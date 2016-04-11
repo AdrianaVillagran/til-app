@@ -25,7 +25,7 @@ $(function(){
 
   //formats datetimepicker button on newBowForm
   $('#datetimepicker1').datetimepicker({
-      format: 'MM/DD/YYYY'
+      format: 'MM-DD-YYYY'
   });
 
   // compiles Handlebars
@@ -65,6 +65,9 @@ function addBowSubmit(event) {
   event.preventDefault();
   var username = $('#username').val();
   var date = $('#date').val();
+  var formattedDate = date.replace(/[/]/g, '');
+  console.log(formattedDate);
+
   var newBowInput = {  date: $('#date').val(),
                   username: $('#username').val(),
                   beadOfWisdom: $('#beadOfWisdom').val(),

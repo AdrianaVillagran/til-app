@@ -67,8 +67,11 @@ function addBowSubmit(event) {
   event.preventDefault();
 
   //hard-coding userId until I find a way to isolate it
+  var date = $('#date').val();
+  var formattedDate = date.replace(/[/]/g, '');
+  console.log(formattedDate);
   var newBow = {
-                  date: $('#date').val(),
+                  date: date,
                   username: $('#username').val(),
                   beadOfWisdom: $('#beadOfWisdom').val(),
                   topic: $('#topic').val(),
