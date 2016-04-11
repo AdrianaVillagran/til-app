@@ -2,7 +2,8 @@
 var $bowList,
     bowTemplate,
     $newBowForm,
-    $updateForm;
+    $updateForm,
+    date;
 
 $(function(){
   console.log('sanity check');
@@ -56,6 +57,8 @@ $(function(){
   // edit-bow click event
   $bowList.on('click', '.edit-bow', updateBow);
 
+  $('.search').on('click', searchByDate);
+
 });
 //end of document ready
 
@@ -92,6 +95,7 @@ function addBowSubmit(event) {
 
 // handles bow GET success. result of GET request is an array of bow arrays by all users
 function handleBowSuccess(bows) {
+
     //filters through array of bow arrays
     for(var i = 0; i<bows.length; i++) {
       sortBows(bows[i]);
@@ -160,4 +164,43 @@ function handleUpdatedBow(json) {
   $('[data-bow-id=' + bowId + ']').remove();
   // re-renders it with most current data
   renderBow(json);
+}
+
+function handleBowDateSuccess(bows) {
+    console.log("handleBowDateSuccess is called");
+    //filters through array of bow arrays
+    for(var i = 0; i<bows.length; i++) {
+      sortBowsByDate(bows[i]);
+    }
+
+}
+
+// renders bow by bow
+function sortBowsByDate(bows) {
+  for(var i = 0; i<bows.length; i++)
+  if(bows[i].date === date) {
+    if(bows[i].length > 1) {
+      sortBows(bows[i]);
+    } else{
+      renderBow(bows[i]);
+    }
+  }
+}
+
+function searchByDate(event) {
+  event.preventDefault();
+  console.log('search button clicked');
+  date = $('#search').val();
+  console.log(date);
+  $.ajax({
+    method: 'GET',
+    url: '/api/bows',
+    success: handleBowDateSuccess,
+    error: function (err) {
+      console.log("There was an error getting bows:", err);
+    }
+  });
+
+  $bowList.empty();
+
 }

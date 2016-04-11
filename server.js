@@ -126,7 +126,7 @@ app.get('/logout', function (req, res) {
 
 app.get('/api', controllers.api.index);
 app.get('/api/bows', controllers.bow.index);
-app.get('/api/bows/date', controllers.bow.show);
+app.get('/api/bows/:date', controllers.bow.show);
 
 
 app.get('/api/users', controllers.users.index);
