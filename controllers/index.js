@@ -4,4 +4,4 @@ module.exports.bow = require('./bowController');
 
 module.exports.userBows = require('./userBowsController');
 
-module.exports.userBows = require('./usersController');
+module.exports.users = require('./usersController');

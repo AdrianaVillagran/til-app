@@ -95,7 +95,7 @@ app.post('/signup', function (req, res) {
  );
 });
 
-
+//function to send user information to the profile page
 app.get("/api/me", function(req, res){
   res.json(req.user);
 });
@@ -126,9 +126,10 @@ app.get('/api/bows', controllers.bow.index);
 app.get('/api/bows/date', controllers.bow.show);
 
 
-app.get('/api/users', controllers.userBows.index);
+app.get('/api/users', controllers.users.index);
 app.get('/api/users/:username/bows', controllers.userBows.index);
 app.get('/api/users/:username/bows/:date', controllers.userBows.show);
+
 app.delete('/api/users/:username/bows/:id', controllers.userBows.destroy);
 app.post('/api/users/:username/bows', controllers.userBows.create);
 app.put('/api/users/:username/bows/:id', controllers.userBows.update);

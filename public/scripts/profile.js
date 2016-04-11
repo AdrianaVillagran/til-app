@@ -17,7 +17,7 @@ $(function(){
   console.log('sanity check');
 
   $('#datetimepicker1').datetimepicker({
-      format: 'MM/DD/YYYY'
+      format: 'MM-DD-YYYY'
   });
 
   // compiles Handlebars
@@ -48,23 +48,6 @@ $(function(){
       console.log(err);
     }
   });
-
-
-
-
-  // //navbar sign up button opens signupModal
-  // $('.sign-up').on('click', function(event){
-  //   event.preventDefault();
-  //   console.log('sign up button clicked!');
-  //   $('#signupModal').modal();
-  // });
-  //
-  // //navbar login  button opens loginModal
-  // $('.login').on('click', function(event){
-  //   event.preventDefault();
-  //   console.log('login button clicked!');
-  //   $('#loginModal').modal();
-  // });
 
 
   //addBow click event
@@ -115,7 +98,7 @@ function addBowSubmit(event) {
 
 //handles bow GET success
 function handleBowSuccess(bows) {
-  console.log('handleBowSuccess() ...');
+  console.log(bows);
     bows.forEach(function(bow) {
       console.log("We've successfully handledBowSuccess!!!");
       renderBow(bow);

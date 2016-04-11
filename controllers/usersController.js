@@ -1,6 +1,7 @@
 var db = require('../models');
 
 function index(req, res) {
+  console.log('this is getting called');
   db.User.find({}, function (err, users) {
     if (err) {
       console.log("error GETting users", err);
@@ -28,7 +29,7 @@ function destroy(req, res) {
 }
 
 function update(req, res) {
-  
+
 
 }
 
