@@ -59,6 +59,8 @@ $(function(){
   // update bow click event
   $bowList.on('click', '.edit-bow', updateBow);
 
+  $('.search').on('click', searchByDate);
+
 });
 
 
@@ -67,11 +69,8 @@ function addBowSubmit(event) {
   event.preventDefault();
 
   //hard-coding userId until I find a way to isolate it
-  var date = $('#date').val();
-  var formattedDate = date.replace(/[/]/g, '');
-  console.log(formattedDate);
   var newBow = {
-                  date: date,
+                  date: $('#date').val(),
                   username: $('#username').val(),
                   beadOfWisdom: $('#beadOfWisdom').val(),
                   topic: $('#topic').val(),
@@ -162,4 +161,9 @@ function handleUpdatedBow(json) {
   $('[data-bow-id=' + bowId + ']').remove();
   // re-renders it with most current data
   renderBow(json);
+}
+
+function searchByDate(event) {
+  event.preventDefault();
+  console.log('search button clicked');
 }
