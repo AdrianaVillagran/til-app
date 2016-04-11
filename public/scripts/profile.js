@@ -101,6 +101,7 @@ function addBowSubmit(event) {
 //handles bow GET success
 function handleBowSuccess(bows) {
   console.log(bows);
+    $bowList.empty();
     bows.forEach(function(bow) {
       console.log("We've successfully handledBowSuccess!!!");
       renderBow(bow);
@@ -163,7 +164,19 @@ function handleUpdatedBow(json) {
   renderBow(json);
 }
 
+// handles search by date query and requests bows by date
 function searchByDate(event) {
   event.preventDefault();
   console.log('search button clicked');
+  var date = $('#search').val();
+  console.log(date);
+  $.ajax({
+    method: 'GET',
+    url: '/api/users/' + username + '/bows/' + date,
+    success: handleBowSuccess,
+    error: function (err) {
+      console.log(err);
+    }
+
+  });
 }
