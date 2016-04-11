@@ -5,12 +5,15 @@ var express = require('express'),
     passport = require('passport'),
     LocalStrategy = require('passport-local').Strategy;
 
+
+
 var db = require('./models'),
     User = db.User;
 
 
 // generate a new express app and call it 'app'
 var app = express();
+app.use('/vendor', express.static(__dirname + '/bower_components'));
 
 // body parser config to accept our datatypes
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -35,7 +38,7 @@ app.use(express.static(__dirname + '/public'));
 
 // We'll serve jQuery and bootstrap from a local bower cache avoiding CDNs
 // We're placing these under /vendor to differentiate them from our own assets
-app.use('/vendor', express.static(__dirname + '/bower_components'));
+
 
 app.set('view engine', 'hbs');
 
