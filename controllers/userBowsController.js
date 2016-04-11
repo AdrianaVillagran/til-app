@@ -50,20 +50,9 @@ function create(req, res) {
 }
 
 
-
 function show(req, res) {
-  console.log('api/users/username/bows/date is getting called');
   var username = req.params.username;
   var date = req.params.date;
-  console.log(date);
-
-  // db.User.find()
-  // .where('')
-  // .in([date])
-  // .exec(function (err, bows) {
-  //   if (err) { console.log('error finding matching bows', err); }
-  //   res.json(bows);
-  // });
 
   db.User.findOne({username: username}, function (err, foundUser) {
     if(err) {
@@ -72,17 +61,13 @@ function show(req, res) {
     }
     var foundBows = foundUser.bows;
     var matchingBows = [];
-    console.log(foundBows[0].date);
     for(var i=0 ; i<foundBows.length ; i++) {
       if(foundBows[i].date === date) {
         matchingBows.push(foundBows[i]);
       }
     }
     res.json(matchingBows);
-
-
   });
-
 }
 
 
