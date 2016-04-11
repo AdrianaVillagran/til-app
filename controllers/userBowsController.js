@@ -1,14 +1,15 @@
 var db = require('../models');
 
 function index(req, res) {
-  db.User.find({}, function (err, users) {
-    if (err) {
-      console.log("error GETting users", err);
+  var username = req.params.username;
+  db.User.findOne({username: username}, function(err, foundUser) {
+    if(err) {
+      console.log('error finding user', err);
       res.status(404);
     }
-    res.status(200).json(users);
+    var foundBows = foundUser.bows;
+    res.json(foundUser.bows);
   });
-
 }
 
 
@@ -49,18 +50,10 @@ function create(req, res) {
 
 
 function show(req, res) {
-  var username = req.params.username;
-  db.User.findOne({username: username}, function(err, foundUser) {
-    if(err) {
-      console.log('error finding user', err);
-      res.status(404);
-    }
-    var foundBows = foundUser.bows;
-    res.json(foundUser.bows);
-  });
 
 
 }
+
 
 function destroy(req, res) {
   // if(!req.user) {

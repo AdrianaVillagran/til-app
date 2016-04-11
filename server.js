@@ -123,10 +123,11 @@ app.get('/logout', function (req, res) {
 
 app.get('/api', controllers.api.index);
 app.get('/api/bows', controllers.bow.index);
+app.get('/api/bows/date', controllers.bow.show);
 
 
 app.get('/api/users', controllers.userBows.index);
-app.get('/api/users/:username/bows', controllers.userBows.show);
+app.get('/api/users/:username/bows', controllers.userBows.index);
 app.get('/api/users/:username/bows/:date', controllers.userBows.show);
 app.delete('/api/users/:username/bows/:id', controllers.userBows.destroy);
 app.post('/api/users/:username/bows', controllers.userBows.create);
