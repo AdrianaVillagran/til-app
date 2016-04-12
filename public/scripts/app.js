@@ -14,14 +14,13 @@ $(function(){
     url: '/loggedin',
     success: function(json) {
       if(parseInt(json) !== 0) {
-        console.log("!user");
         // following functions change the homepage if the user is not logged in
-        $('#dropBead').attr("disabled", "disabled");
-
         $('.signup').text('My Wisdom Profile');
         $('.signup').attr('href', '/profile');
         $('.login').text('Logout');
         $('.login').attr('href', '/logout');
+      } else {
+        $('#dropBead').attr("disabled", "disabled");
       }
     },
     error: function(err) {
@@ -69,8 +68,9 @@ $(function(){
 //handles addBow POST call
 function addBowSubmit(event) {
   event.preventDefault();
+  var username = $('#username').val();
   var newBowInput = {  date: $('#date').val(),
-                  username: $('#username').val(),
+                  username: username,
                   beadOfWisdom: $('#beadOfWisdom').val(),
                   topic: $('#topic').val(),
                   resourceUrl: $('#resourceUrl').val(),
@@ -80,7 +80,7 @@ function addBowSubmit(event) {
   $.ajax ({
     method: 'POST',
     url: "/api/users/" + username + "/bows",
-    data: $newBowForm.serialize(),
+    data: newBowInput,
     success: renderBow,
     error: function(err) {
       console.log("Oops, there was an error posting bow!",err);
@@ -109,6 +109,7 @@ function sortBows(bows) {
 
 // takes a single bow and renders it to the top of the page
 function renderBow(bow) {
+  console.log('rendering bow');
   var bowHtml = bowTemplate(bow);
   $bowList.prepend(bowHtml);
 

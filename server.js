@@ -63,7 +63,7 @@ app.get('/profile', function profilePage (req, res) {
 // show signup view
 app.get('/signup', function (req, res) {
   if(req.user) {
-    res.redirect('/profile');
+    res.redirect('/');
   }
   res.render('signup');
 });
@@ -71,7 +71,7 @@ app.get('/signup', function (req, res) {
 // show login view
 app.get('/login', function (req, res) {
   if(req.user) {
-    res.redirect('/profile');
+    res.redirect('/');
   }
   res.render('login', {user: JSON.stringify(req.user) + "|| null" }); // you can also use res.sendFile
 });
@@ -111,7 +111,7 @@ app.get('/loggedin', function(req, res) {
 // log in user
 app.post('/login', passport.authenticate('local'), function (req, res) {
   console.log(req.user.username);
-  res.redirect('/profile');
+  res.redirect('/');
 });
 
 // log out user

@@ -24,7 +24,7 @@ function create(req, res) {
   console.log(username);
 
   var newBow = new db.Bow({
-                            username: req.body.username,
+                            username: username,
                             date: req.body.date,
                             beadOfWisdom: req.body.beadOfWisdom,
                             description: req.body.description,

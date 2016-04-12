@@ -82,8 +82,6 @@ function addBowSubmit(event) {
 
     console.log('username:', username);
 
-
-
   $.ajax ({
     method: 'POST',
     url: "/api/users/" + username + "/bows",
