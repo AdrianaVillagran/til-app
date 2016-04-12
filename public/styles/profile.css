@@ -8,12 +8,12 @@ body {
 .jumbotron {
   background: rgba(0, 0, 0, 0.5);
   color: white;
-  height: 250px;
+  height: 300px;
 }
 
 h1 {
   font-family: 'Oswald', sans-serif;
-  letter-spacing: 0.5em;
+  letter-spacing: 0.3em;
 }
 
 h3 {
@@ -48,6 +48,8 @@ p {
   border: none;
 }
 
+
+
 #cover-title {
-  margin-top: 20px;
+  margin-top: 10px;
 }

@@ -30,6 +30,7 @@ $(function(){
     success: function getUserData(user) {
       console.log("Username: "  + user.username);
       username = user.username;
+      $('#welcomeMessage').text('Welcome, ' + username + '!');
       $.ajax({
         method: 'GET',
         url: '/api/users/' + username + '/bows',
@@ -38,7 +39,8 @@ $(function(){
           console.log("There was an error getting bows:", err);
         }
       });
-      $('#welcomeMessage').text('Welcome, ' + username + '!');
+
+
     },
     error: function handleUserError(err) {
       console.log(err);
@@ -94,7 +96,6 @@ function addBowSubmit(event) {
 
 //handles bow GET success
 function handleBowSuccess(bows) {
-  console.log(bows);
     $bowList.empty();
     bows.forEach(function(bow) {
       console.log("We've successfully handledBowSuccess!!!");

@@ -60,12 +60,9 @@ var sampleBeads = [{
                     }];
 
 db.Users.remove({}, function(err, users){
-
   db.Users.create(sampleUsers, function(err, users){
     if (err) { return console.log('ERROR', err); }
     console.log("created", users.length, "bows");
     console.log(users);
   });
-
-  
 });
