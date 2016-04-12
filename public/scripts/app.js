@@ -103,8 +103,8 @@ function handleBowSuccess(bows) {
 }
 
 // renders bow by bow
-function sortBows(arr) {
-  arr.forEach(function(bow) {
+function sortBows(bows) {
+  bows.forEach(function(bow) {
     renderBow(bow);
   });
 }
@@ -113,6 +113,8 @@ function sortBows(arr) {
 function renderBow(bow) {
   var bowHtml = bowTemplate(bow);
   $bowList.prepend(bowHtml);
+  
+
 }
 
 //handles Deleted bow success
@@ -202,6 +204,6 @@ function searchByDate(event) {
   });
 
   $('#search-form')[0].reset();
-  $bowList.empty();
+
 
 }
