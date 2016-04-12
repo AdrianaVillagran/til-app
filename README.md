@@ -1,6 +1,6 @@
 # T.I.L. App
 
-*The Today I Learned (T.I.L.) App is a site where users can login and store beads of wisdom and interesting factoids that he/she learns throughout the day. Even if you're not a user you can see other knowledge nuggets left by other users.*
+*Today I Learned (T.I.L.) is an app where users can login and store beads of wisdom and interesting factoids that he/she learns throughout the day. Even if you're not a user you can see other knowledge nuggets left by other users.*
 
 [https://whispering-earth-61253.herokuapp.com/]()
 
@@ -31,5 +31,10 @@
 * Include pagination
 * Run a Wikipedia API search by topic when the user uploads a post
 * Have a Twitter feed sidebar with #TIL tweets
+* View other users' profiles
+* Keep other users' beads of wisdom on your dashboard
 
 ##Screenshot(s)
+
+<img src="/public/images/TIL_homepage.png">
+<img src="/public/images/TIL_profile.png">
