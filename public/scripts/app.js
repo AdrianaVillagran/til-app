@@ -13,10 +13,15 @@ $(function(){
     method: 'GET',
     url: '/loggedin',
     success: function(json) {
-      if(parseInt(json) === 0) {
+      if(parseInt(json) !== 0) {
         console.log("!user");
         // following functions change the homepage if the user is not logged in
         $('#dropBead').attr("disabled", "disabled");
+
+        $('.signup').text('My Wisdom Profile');
+        $('.signup').attr('href', '/profile');
+        $('.login').text('Logout');
+        $('.login').attr('href', '/logout');
       }
     },
     error: function(err) {
