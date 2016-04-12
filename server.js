@@ -36,10 +36,6 @@ passport.deserializeUser(User.deserializeUser());
 // serve static files from public folder
 app.use(express.static(__dirname + '/public'));
 
-// We'll serve jQuery and bootstrap from a local bower cache avoiding CDNs
-// We're placing these under /vendor to differentiate them from our own assets
-
-
 app.set('view engine', 'hbs');
 
 var controllers = require('./controllers');
@@ -73,7 +69,7 @@ app.get('/login', function (req, res) {
   if(req.user) {
     res.redirect('/');
   }
-  res.render('login', {user: JSON.stringify(req.user) + "|| null" }); // you can also use res.sendFile
+  res.render('login', {user: JSON.stringify(req.user) + "|| null" });
 });
 
 /*
@@ -92,7 +88,7 @@ app.post('/signup', function (req, res) {
      }
      passport.authenticate('local')(req, res, function() {
        console.log('Signup success');
-       res.redirect('/profile');
+       res.redirect('/');
      });
    }
  );
