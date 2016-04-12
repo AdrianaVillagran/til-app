@@ -109,7 +109,6 @@ function sortAndRenderBows(bows) {
   bows.forEach(function(bow) {
     renderBow(bow);
   });
-
 }
 
 // takes a single bow and renders it to the top of the page
@@ -140,7 +139,6 @@ function searchByDate(event) {
 // function to sort through and call function to handle array of bow arrays that
 // comes back when search by date entry is submitted
 function handleBowDateSuccess(bows) {
-    console.log("handleBowDateSuccess is called");
     //filters through array of bow arrays
     for(var i = 0; i<bows.length; i++) {
       sortBowsByDate(bows[i]);
