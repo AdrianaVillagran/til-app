@@ -36,8 +36,8 @@
 
 ##Screenshot(s)
 
-#Homepage
+###Homepage
 <img src="/public/images/TIL_homepage.png">
 
-#User Profile
+###User Profile
 <img src="/public/images/TIL_profile.png">
