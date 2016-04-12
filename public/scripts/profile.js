@@ -9,7 +9,6 @@ var $bowList,
 
 // DOCUMENT READY
 $(function(){
-  console.log('sanity check');
 
   $('#datetimepicker1').datetimepicker({
       format: 'MM-DD-YYYY'
@@ -28,7 +27,6 @@ $(function(){
     method: 'GET',
     url: '/api/me',
     success: function getUserData(user) {
-      console.log("Username: "  + user.username);
       username = user.username;
       $('#welcomeMessage').text('Welcome, ' + username + '!');
       $.ajax({
@@ -39,8 +37,6 @@ $(function(){
           console.log("There was an error getting bows:", err);
         }
       });
-
-
     },
     error: function handleUserError(err) {
       console.log(err);
@@ -75,10 +71,6 @@ function addBowSubmit(event) {
                   resourceUrl: $('#resourceUrl').val(),
                   description: $('#description').val()
                 };
-    console.log(newBow);
-
-
-    console.log('username:', username);
 
   $.ajax ({
     method: 'POST',
@@ -114,7 +106,6 @@ function deleteBow(event){
   event.preventDefault();
 
   var bowId = $(this).closest('.bow').data('bow-id');
-  console.log(bowId);
   $('div[data-bow-id=' + bowId + ']').remove();
 
   $.ajax ({
@@ -132,13 +123,10 @@ function deleteBow(event){
 //handles update bow success
 function updateBow(event) {
   event.preventDefault();
-
-  console.log('edit bow button clicked!');
   var bowId = $(this).closest('.bow').data('bow-id');
   console.log(bowId);
 
   var updateInput = $('#update-' + bowId + " form").serialize();
-  console.log(updateInput);
   $.ajax({
     method:'PUT',
     url: '/api/users/' + username + '/bows/' + bowId,
@@ -162,9 +150,7 @@ function handleUpdatedBow(json) {
 // handles search by date query and requests bows by date
 function searchByDate(event) {
   event.preventDefault();
-  console.log('search button clicked');
   var date = $('#search').val();
-  console.log(date);
   $.ajax({
     method: 'GET',
     url: '/api/users/' + username + '/bows/' + date,

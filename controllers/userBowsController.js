@@ -21,8 +21,6 @@ function create(req, res) {
   }
 
   var username = req.params.username;
-  console.log(username);
-
   var newBow = new db.Bow({
                             username: username,
                             date: req.body.date,
@@ -31,7 +29,6 @@ function create(req, res) {
                             topic: req.body.topic,
                             resourceUrl: req.body.resourceUrl
                           });
-  console.log(newBow);
 
   db.User.findOne({username: username}, function(err, foundUser) {
     if(err) {

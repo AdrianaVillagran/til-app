@@ -15,7 +15,8 @@
 * Mongoose
 * MongoDB
 * Express
-* Passport JS
+* Passport
+* Node.js
 * Bower
 
 ## Existing Features
@@ -32,7 +33,7 @@
 * Run a Wikipedia API search by topic when the user uploads a post
 * Have a Twitter feed sidebar with #TIL tweets
 * View other users' profiles
-* Keep other users' beads of wisdom on your dashboard
+* Collect other users' beads of wisdom on your dashboard
 
 ##Screenshot(s)
 

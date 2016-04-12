@@ -6,7 +6,6 @@ var $bowList,
     date;
 
 $(function(){
-  console.log('sanity check');
 
   //function to see if there is a user logged in
   $.ajax({
@@ -120,9 +119,7 @@ function renderBow(bow) {
 // handles event listener for search by date form entry
 function searchByDate(event) {
   event.preventDefault();
-  console.log('search button clicked');
   date = $('#search').val();
-  console.log(date);
   $.ajax({
     method: 'GET',
     url: '/api/bows',

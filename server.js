@@ -87,7 +87,6 @@ app.post('/signup', function (req, res) {
        return res.status(400);
      }
      passport.authenticate('local')(req, res, function() {
-       console.log('Signup success');
        res.redirect('/');
      });
    }
