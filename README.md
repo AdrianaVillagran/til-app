@@ -1,26 +1,35 @@
 # T.I.L. App
 
-*Short explanation of the project (1-2 sentences) - what is the goal of the project and/or main functionality?*
+*The Today I Learned (T.I.L.) App is a site where users can login and store beads of wisdom and interesting factoids that he/she learns throughout the day. Even if you're not a user you can see other knowledge nuggets left by other users.*
 
 [https://whispering-earth-61253.herokuapp.com/]()
 
 ## Technologies Used
 
-*What technologies did you use to develop this project? (bullet points)*
-
-
+* Handlebars
+* Bootstrap
+* jQuery
+* HTML
+* CSS
+* Javascript
+* Mongoose
+* MongoDB
+* Express
+* Passport JS
+* Bower
 
 ## Existing Features
 
-*What features does your racing game have? (bullet points)*
-
-
-
+* User Authentication/Authorization
+* Create, edit, and delete your beads of wisdom
+* Search your own beads of wisdom by date
+* Or search all beads of wisdom by all users
 
 ## Planned Features
 
-*What changes would you make to your project if you continue to work on it? (bullet points)*
+* Have the homepage display posts by all users created on the current date
+* Include pagination
+* Run a Wikipedia API search by topic when the user uploads a post
+* Have a Twitter feed sidebar with #TIL tweets
 
-
-
-##Screenshot(s) (optional)
+##Screenshot(s)
