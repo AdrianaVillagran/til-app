@@ -16,9 +16,9 @@ function index(req, res) {
 
 
 function create(req, res) {
-  // if(!req.user) {
-  //   return res.sendStatus(401);
-  // }
+  if(!req.user) {
+    return res.sendStatus(401).redirect('/login');
+  }
 
   var username = req.params.username;
   console.log(username);
@@ -72,9 +72,9 @@ function show(req, res) {
 
 
 function destroy(req, res) {
-  // if(!req.user) {
-  //   return res.sendStatus(401);
-  // }
+  if(!req.user) {
+    return res.sendStatus(401).redirect('/login');
+  }
 
   var username = req.params.username;
   var bowId = req.params.id;
@@ -98,9 +98,9 @@ function destroy(req, res) {
 }
 
 function update(req, res) {
-  // if(!req.user) {
-  //   return res.sendStatus(401);
-  // }
+  if(!req.user) {
+    return res.sendStatus(401).redirect('/login');
+  }
 
   var username = req.params.username;
   var bowId = req.params.id;

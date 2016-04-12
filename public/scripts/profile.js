@@ -1,8 +1,3 @@
-/*
-NOTES: might not need to ask for username in form after adding /api/me ajax call
-if no resource then don't post resource (handlebars if statement)
-*/
-
 
 // global variables
 var $bowList,
@@ -43,6 +38,7 @@ $(function(){
           console.log("There was an error getting bows:", err);
         }
       });
+      $('#welcomeMessage').text('Welcome, ' + username + '!');
     },
     error: function handleUserError(err) {
       console.log(err);

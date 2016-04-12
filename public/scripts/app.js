@@ -109,11 +109,8 @@ function sortBows(bows) {
 
 // takes a single bow and renders it to the top of the page
 function renderBow(bow) {
-  console.log('rendering bow');
   var bowHtml = bowTemplate(bow);
   $bowList.prepend(bowHtml);
-
-
 }
 
 // handles event listener for search by date form entry

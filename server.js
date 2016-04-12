@@ -21,7 +21,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 // middleware for auth
 app.use(cookieParser());
 app.use(session({
-  secret: 'hedgehog fuzz', // change this!
+  secret: 'hedgehog fuzz',
   resave: false,
   saveUninitialized: false
 }));
@@ -98,7 +98,7 @@ app.post('/signup', function (req, res) {
  );
 });
 
-//function to send user information to the profile page
+// function to send user information to the profile page
 app.get("/api/me", function(req, res){
   res.json(req.user);
 });
@@ -110,15 +110,12 @@ app.get('/loggedin', function(req, res) {
 
 // log in user
 app.post('/login', passport.authenticate('local'), function (req, res) {
-  console.log(req.user.username);
   res.redirect('/');
 });
 
 // log out user
 app.get('/logout', function (req, res) {
-  console.log("BEFORE logout", req.user);
   req.logout();
-  console.log("AFTER logout", req.user);
   res.redirect('/');
 });
 
@@ -126,13 +123,9 @@ app.get('/logout', function (req, res) {
 
 app.get('/api', controllers.api.index);
 app.get('/api/bows', controllers.bow.index);
-app.get('/api/bows/:date', controllers.bow.show);
-
-
 app.get('/api/users', controllers.users.index);
 app.get('/api/users/:username/bows', controllers.userBows.index);
 app.get('/api/users/:username/bows/:date', controllers.userBows.show);
-
 app.delete('/api/users/:username/bows/:id', controllers.userBows.destroy);
 app.post('/api/users/:username/bows', controllers.userBows.create);
 app.put('/api/users/:username/bows/:id', controllers.userBows.update);
