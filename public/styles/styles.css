@@ -1,15 +1,13 @@
 body {
   background-image: url(/images/background.jpg);
   background-size: cover;
-  background-repeat: no-repeat;
-  height: 100vh;
-
+  height:100vh
 }
+
 .jumbotron {
-  background: rgba(0, 0, 0, 0.5);;
+  background: rgba(0, 0, 0, 0.5);
   color: white;
   height: 250px;
-
 }
 
 .navbar {

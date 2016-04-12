@@ -51,13 +51,11 @@ $(function(){
   //addBow click event
   $('#addBow').on('submit', addBowSubmit);
 
-  //delete-bow click event
-  $bowList.on('click', '.delete-bow', deleteBow);
-
-  // edit-bow click event
-  $bowList.on('click', '.edit-bow', updateBow);
-
+  // search by date form entry
   $('.search').on('click', searchByDate);
+
+  // event listener for all beads button
+  $('#allBeads').on('click', getAllBows);
 
 });
 //end of document ready
@@ -88,16 +86,16 @@ function addBowSubmit(event) {
   $newBowForm[0].reset();
 }
 
-// handles bow GET success. result of GET request is an array of bow arrays by all users
+// handles all bows by all users GET success. result of GET request is an
+//array of bow arrays by all users
 function handleBowSuccess(bows) {
-
     //filters through array of bow arrays
     for(var i = 0; i<bows.length; i++) {
       sortBows(bows[i]);
     }
 }
 
-// renders bow by bow
+// renders an array of bows
 function sortBows(bows) {
   bows.forEach(function(bow) {
     renderBow(bow);
@@ -112,78 +110,7 @@ function renderBow(bow) {
 
 }
 
-//handles Deleted bow success
-function deleteBow(event){
-  event.preventDefault();
-
-  var bowId = $(this).closest('.bow').data('bow-id');
-  console.log(bowId);
-  $('div[data-bow-id=' + bowId + ']').remove();
-
-  $.ajax ({
-    method: 'DELETE',
-    url: '/api/users/' + userId + "/bows/" + bowId,
-    success: function(json) {
-      console.log("bow successfully deleted");
-    },
-    error: function(err) {
-      console.log("the bow was not successfully deleted", err);
-    }
-  });
-}
-
-//handles update bow success
-function updateBow(event) {
-  event.preventDefault();
-
-  console.log('edit bow button clicked!');
-
-  var bowId = $(this).closest('.bow').data('bow-id');
-  console.log(bowId);
-
-  var updateInput = $('#update-' + bowId + " form").serialize();
-  console.log(updateInput);
-  $.ajax({
-    method:'PUT',
-    url: '/api/users/' + username + '/bows/' + bowId,
-    data: updateInput,
-    success: handleUpdatedBow,
-    error: function(err) { console.log('there was an error updating bow', err); }
-  });
-
-
-}
-
-//renders updated bow to view
-function handleUpdatedBow(json) {
-  var bowId = json._id;
-  // removes bow from the page
-  $('[data-bow-id=' + bowId + ']').remove();
-  // re-renders it with most current data
-  renderBow(json);
-}
-
-function handleBowDateSuccess(bows) {
-    console.log("handleBowDateSuccess is called");
-    //filters through array of bow arrays
-    for(var i = 0; i<bows.length; i++) {
-      sortBowsByDate(bows[i]);
-    }
-
-}
-
-// renders bow by bow
-function sortBowsByDate(bows) {
-  for(var i = 0; i<bows.length; i++)
-  if(bows[i].date === date) {
-    if(bows[i].length > 1) {
-      sortBows(bows[i]);
-    } else {
-      renderBow(bows[i]);
-    }
-  }
-}
-
+// handles event listener for search by date form entry
 function searchByDate(event) {
   event.preventDefault();
   console.log('search button clicked');
@@ -200,6 +127,39 @@ function searchByDate(event) {
 
   $('#search-form')[0].reset();
   $bowList.empty();
+}
 
+// function to sort through and call function to handle array of bow arrays that
+// comes back when search by date entry is submitted
+function handleBowDateSuccess(bows) {
+    console.log("handleBowDateSuccess is called");
+    //filters through array of bow arrays
+    for(var i = 0; i<bows.length; i++) {
+      sortBowsByDate(bows[i]);
+    }
 
+}
+
+// sorts through bows to find those that match by  date and calls function to
+// render bows based on how many bows there are
+function sortBowsByDate(bows) {
+  for(var i = 0; i<bows.length; i++)
+  if(bows[i].date === date) {
+    if(bows[i].length > 1) {
+      sortBows(bows[i]);
+    } else {
+      renderBow(bows[i]);
+    }
+  }
+}
+
+function getAllBows(event) {
+  $.ajax({
+    method: 'GET',
+    url: '/api/bows',
+    success: handleBowSuccess,
+    error: function (err) {
+      console.log("There was an error getting bows:", err);
+    }
+  });
 }
