@@ -96,15 +96,16 @@ function addBowSubmit(event) {
 function handleBowSuccess(bows) {
     //filters through array of bow arrays
     for(var i = 0; i<bows.length; i++) {
-      sortBows(bows[i]);
+      sortAndRenderBows(bows[i]);
     }
 }
 
 // renders an array of bows
-function sortBows(bows) {
+function sortAndRenderBows(bows) {
   bows.forEach(function(bow) {
     renderBow(bow);
   });
+  
 }
 
 // takes a single bow and renders it to the top of the page
@@ -135,6 +136,7 @@ function searchByDate(event) {
 // function to sort through and call function to handle array of bow arrays that
 // comes back when search by date entry is submitted
 function handleBowDateSuccess(bows) {
+
     console.log("handleBowDateSuccess is called");
     //filters through array of bow arrays
     for(var i = 0; i<bows.length; i++) {
@@ -146,17 +148,23 @@ function handleBowDateSuccess(bows) {
 // sorts through bows to find those that match by  date and calls function to
 // render bows based on how many bows there are
 function sortBowsByDate(bows) {
+
   for(var i = 0; i<bows.length; i++)
   if(bows[i].date === date) {
     if(bows[i].length > 1) {
-      sortBows(bows[i]);
+      sortAndRenderBows(bows[i]);
     } else {
       renderBow(bows[i]);
     }
   }
 }
 
+function clearBows() {
+  $bowlist.empty();
+}
+
 function getAllBows(event) {
+
   $.ajax({
     method: 'GET',
     url: '/api/bows',
@@ -165,4 +173,6 @@ function getAllBows(event) {
       console.log("There was an error getting bows:", err);
     }
   });
+
+
 }
