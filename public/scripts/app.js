@@ -16,7 +16,7 @@ $(function(){
       if(parseInt(json) === 0) {
         console.log("!user");
         // following functions change the homepage if the user is not logged in
-        $('#addBow').attr("disabled", "disabled");
+        $('#dropBead').attr("disabled", "disabled");
       }
     },
     error: function(err) {
@@ -66,11 +66,6 @@ $(function(){
 //handles addBow POST call
 function addBowSubmit(event) {
   event.preventDefault();
-  var username = $('#username').val();
-  var date = $('#date').val();
-  var formattedDate = date.replace(/[/]/g, '');
-  console.log(formattedDate);
-
   var newBowInput = {  date: $('#date').val(),
                   username: $('#username').val(),
                   beadOfWisdom: $('#beadOfWisdom').val(),
@@ -113,7 +108,7 @@ function sortBows(bows) {
 function renderBow(bow) {
   var bowHtml = bowTemplate(bow);
   $bowList.prepend(bowHtml);
-  
+
 
 }
 
@@ -183,7 +178,7 @@ function sortBowsByDate(bows) {
   if(bows[i].date === date) {
     if(bows[i].length > 1) {
       sortBows(bows[i]);
-    } else{
+    } else {
       renderBow(bows[i]);
     }
   }
