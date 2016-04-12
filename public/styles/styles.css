@@ -7,7 +7,7 @@ body {
 
 .jumbotron {
   background: rgba(0, 0, 0, 0.5);
-  color: white;
+  color: rgba(255, 255, 255, 0.8)
   height: 250px;
 }
 
@@ -47,6 +47,22 @@ p {
   background: #4f5c6d;
   color: #FFF;
   border: none;
+}
+
+.top-btn {
+  background: #bd895b;
+  color: #FFF;
+  border: none;
+  font-family: 'Oswald', sans-serif;
+  letter-spacing: 0.1em;
+}
+
+.top-btn:hover {
+  background: #ce7525;
+  color: #FFF;
+  border: none;
+  font-family: 'Oswald', sans-serif;
+  letter-spacing: 0.1em;
 }
 
 #cover-title {
