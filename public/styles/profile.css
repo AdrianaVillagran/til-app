@@ -40,13 +40,17 @@ p {
 .nav-button{
   background: #363e49;
   border: none;
-  color: #FFF;
+  color: lightgrey;
+  font-family: 'Oswald', sans-serif;
+  letter-spacing: 0.1em;
 }
 
 .nav-button:hover {
   background: #4f5c6d;
-  color: #FFF;
+  color: lightgrey;
   border: none;
+  font-family: 'Oswald', sans-serif;
+  letter-spacing: 0.1em;
 }
 
 .top-btn {

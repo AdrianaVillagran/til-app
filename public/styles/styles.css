@@ -7,7 +7,7 @@ body {
 
 .jumbotron {
   background: rgba(0, 0, 0, 0.5);
-  color: rgba(255, 255, 255, 0.8)
+  color: rgba(255, 255, 255, 0.8);
   height: 250px;
 }
 
@@ -40,13 +40,17 @@ p {
 .nav-button{
   background: #363e49;
   border: none;
-  color: #FFF;
+  color: lightgrey;
+  font-family: 'Oswald', sans-serif;
+  letter-spacing: 0.1em;
 }
 
 .nav-button:hover {
   background: #4f5c6d;
-  color: #FFF;
+  color: lightgrey;
   border: none;
+  font-family: 'Oswald', sans-serif;
+  letter-spacing: 0.1em;
 }
 
 .top-btn {
