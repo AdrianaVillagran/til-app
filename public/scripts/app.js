@@ -59,7 +59,11 @@ $(function(){
   $('.search').on('click', searchByDate);
 
   // event listener for all beads button
-  $('#allBeads').on('click', getAllBows);
+  // have to reload page for now until I find a way to empty the $bowList after
+  // searchByDate GET calls
+  $('#allBeads').on('click', function(event) {
+    location.reload();
+  });
 
 });
 //end of document ready
@@ -105,7 +109,7 @@ function sortAndRenderBows(bows) {
   bows.forEach(function(bow) {
     renderBow(bow);
   });
-  
+
 }
 
 // takes a single bow and renders it to the top of the page
@@ -136,19 +140,16 @@ function searchByDate(event) {
 // function to sort through and call function to handle array of bow arrays that
 // comes back when search by date entry is submitted
 function handleBowDateSuccess(bows) {
-
     console.log("handleBowDateSuccess is called");
     //filters through array of bow arrays
     for(var i = 0; i<bows.length; i++) {
       sortBowsByDate(bows[i]);
     }
-
 }
 
 // sorts through bows to find those that match by  date and calls function to
 // render bows based on how many bows there are
 function sortBowsByDate(bows) {
-
   for(var i = 0; i<bows.length; i++)
   if(bows[i].date === date) {
     if(bows[i].length > 1) {
@@ -161,18 +162,4 @@ function sortBowsByDate(bows) {
 
 function clearBows() {
   $bowlist.empty();
-}
-
-function getAllBows(event) {
-
-  $.ajax({
-    method: 'GET',
-    url: '/api/bows',
-    success: handleBowSuccess,
-    error: function (err) {
-      console.log("There was an error getting bows:", err);
-    }
-  });
-
-
 }
