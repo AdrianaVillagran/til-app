@@ -7,6 +7,27 @@ body {
   height:100vh
 }
 
+h2 {
+  font-family: 'Oswald', sans-serif;
+  letter-spacing: 0.3em;
+  color: white;
+}
+
+p {
+  font-family: 'Open Sans Condensed', sans-serif;
+  letter-spacing: 0.2em;
+  color: white;
+  font-size: 18px;
+  line-height: 1.5;
+  margin: 5px;
+}
+
+a {
+  color: white;
+}
+
+
+
 .form-signin {
   max-width: 330px;
   padding: 15px;
