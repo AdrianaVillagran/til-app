@@ -5,6 +5,7 @@ function index(req, res) {
   db.User.find({}, function (err, users) {
     if (err) { res.status(404); }
 
+    /* TODO: this is a fun data structure, but a dangerous one. It can quickly grow huge and take a large amount of time.  ICould you get away with simply doing a db.Bow.find() ? It might not be what you want, so I'm not going to judge.  I'm super stoked you conquered the two-dimensional array challenge :) -jc */
   // filter through users and isolate all bows
     var bows = [];
     for(var i=0; i < users.length; i++) {
@@ -14,6 +15,7 @@ function index(req, res) {
     }
     res.json(bows);
   });
+
 
 }
 
@@ -35,6 +37,7 @@ function update(req, res) {
 
 
 }
+/* TODO: Don't export empty functions. This is a security issue. -jc */
 // export public methods here
 module.exports = {
   index: index,

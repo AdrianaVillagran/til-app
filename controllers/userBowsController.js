@@ -1,7 +1,6 @@
 var db = require('../models');
 
 function index(req, res) {
-
   var username = req.params.username;
   db.User.findOne({username: username}, function(err, foundUser) {
     if(err) {
@@ -48,6 +47,7 @@ function create(req, res) {
 
 
 function show(req, res) {
+  /* TODO: This endpoint never gets called.  When you activate a search with the date as a parameter, it ignores the date string.  Try creating  a route such as /api/users/:username/search/?date=MM/DD/YYYY . Access the date object in this string with req.query.  Change this route to the above recommended route adn you should be where you want to be. -jc */
   var username = req.params.username;
   var date = req.params.date;
 
@@ -57,12 +57,15 @@ function show(req, res) {
       res.status(404);
     }
     var foundBows = foundUser.bows;
+
+    /* TODO: I want to challenge you to use the built in array method filter.  This will go through your array and only return bows with a date match.  It takes less code to execute and filters are just downright eloquent. -jc */
     var matchingBows = [];
     for(var i=0 ; i<foundBows.length ; i++) {
       if(foundBows[i].date === date) {
         matchingBows.push(foundBows[i]);
       }
     }
+
     res.json(matchingBows);
   });
 }
@@ -110,8 +113,10 @@ function update(req, res) {
     }
 
     var foundBow = foundUser.bows.id(bowId);
+    /* TODO: do these two lines need to be written? Since you are directly moving over each attribute, this seems redundant -jc*/
     foundBow.date = foundBow.date;
     foundBow.username = foundBow.username;
+
     foundBow.beadOfWisdom = req.body.beadOfWisdom;
     foundBow.description = req.body.description;
     foundBow.resourceUrl= req.body.resourceUrl;
