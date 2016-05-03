@@ -58,9 +58,9 @@ var sampleBeads = [{
                       resourceUrl: "http://www.npr.org/2013/08/10/209178988/the-hackers",
                       topic: "science"
                     }];
-
-db.Users.remove({}, function(err, users){
-  db.Users.create(sampleUsers, function(err, users){
+/* TODO: Users needs to be User -jc */
+db.User.remove({}, function(err, users){
+  db.User.create(sampleUsers, function(err, users){
     if (err) { return console.log('ERROR', err); }
     console.log("created", users.length, "bows");
     console.log(users);

@@ -140,7 +140,9 @@
              <script id="wisdom-template" type="text/x-handlebars-template">
 
               <div class="panel panel-default bow" data-bow-id="{{_id}}">
-                <div class="panel-heading" align="right">Posted by <span style="color: #e17f43; font-size: 18px;">{{username}}</span> on {{date}}</div>
+                <div class="panel-heading" align="right">Posted by
+                  <!-- TODO: Please avoid using in-line CSS in your html -jc -->
+                  <span style="color: #e17f43; font-size: 18px;">{{username}}</span> on {{date}}</div>
                   <div class="panel-body">
                     <h2>{{beadOfWisdom}}</h2>
                     <p>{{description}}</p>
