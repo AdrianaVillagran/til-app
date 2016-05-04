@@ -7,7 +7,7 @@ var BowSchema = new Schema({
           description: String,
           resourceUrl: String,
           topic: String,
-          username: String
+          user : { type: Schema.Types.ObjectId, ref: 'User' }
         });
 
 var Bow = mongoose.model('Bow', BowSchema);

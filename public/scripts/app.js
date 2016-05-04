@@ -5,6 +5,9 @@ var $bowList,
     $updateForm,
     date;
 
+
+
+
 $(function(){
 
   //function to see if there is a user logged in
@@ -34,17 +37,17 @@ $(function(){
 
   // compiles Handlebars
   var bowSource = $('#wisdom-template').html();
-  $bowList = $('#beadsOfWisdom');
   bowTemplate = Handlebars.compile(bowSource);
+  $bowList = $('#beadsOfWisdom');
 
   $newBowForm = $('#addBow form');
   $updateForm = $('#beadsOfWisdom .update-form');
 
-  //GET call for bows data
+  //GET call for bows data - initial load
   $.ajax({
     method: 'GET',
     url: '/api/bows',
-    success: handleBowSuccess,
+    success: renderBows,
     error: function (err) {
       console.log("There was an error getting bows:", err);
     }
@@ -94,18 +97,25 @@ function addBowSubmit(event) {
   $newBowForm[0].reset();
 }
 
-// handles all bows by all users GET success. result of GET request is an
-//array of bow arrays by all users
-function handleBowSuccess(bows) {
-    //filters through array of bow arrays
-    /* TODO: Please consider changing this to a bows.forEach method -jc */
-    for(var i = 0; i<bows.length; i++) {
-      sortAndRenderBows(bows[i]);
+// handles event listener for search by date form entry
+function searchByDate(event) {
+  event.preventDefault();
+  date = $('#search').val();
+  $.ajax({
+    method: 'GET',
+    url: '/api/bows',
+    success: renderBows,
+    error: function (err) {
+      console.log("There was an error getting bows:", err);
     }
+  });
+
+  $('#search-form')[0].reset();
+  $bowList.empty();
 }
 
 // renders an array of bows
-function sortAndRenderBows(bows) {
+function renderBows(bows) {
   bows.forEach(function(bow) {
     renderBow(bow);
   });
@@ -117,50 +127,48 @@ function renderBow(bow) {
   $bowList.prepend(bowHtml);
 }
 
-// handles event listener for search by date form entry
-function searchByDate(event) {
-  event.preventDefault();
-  date = $('#search').val();
-  $.ajax({
-    method: 'GET',
-    url: '/api/bows',
-    success: handleBowDateSuccess,
-    error: function (err) {
-      console.log("There was an error getting bows:", err);
-    }
-  });
 
-  $('#search-form')[0].reset();
-  $bowList.empty();
-}
+// // handles all bows by all users GET success. result of GET request is an
+// //array of bow arrays by all users
+// function handleBowSuccess(bows) {
+//   bows.forEach(function(bow) {
+//     renderBow(bow);
+//   });
+// }
 
 // function to sort through and call function to handle array of bow arrays that
 // comes back when search by date entry is submitted
 /* TODO: The name of this array, bows, is misleading. This array is an array of your users, correct? Consider changing the name of this parameter. It'll make the code easier to read by other devs. -jc */
-function handleBowDateSuccess(bows) {
-    //filters through array of bow arrays
-    /* TODO: Careful, this doesn't filter. This iterates through your bows array and calls a function on them.  Please consider turning this into a bows.forEach function. -jc */
-    for(var i = 0; i<bows.length; i++) {
-      sortBowsByDate(bows[i]);
-    }
-}
+// function handleBowDateSuccess(bows) {
+//     //filters through array of bow arrays
+//     /* TODO: Careful, this doesn't filter. This iterates through your bows array and calls a function on them.  Please consider turning this into a bows.forEach function. -jc */
+//     console.log("HANLDING BOW SUCCESS", bows);
+//     for(var i = 0; i<bows.length; i++) {
+//       console.log("HANLDING BOW SUCCESS INDIVIDUAL", bows[i]);
+//       sortBowsByDate(bows[i]);
+//     }
+// }
 
 // sorts through bows to find those that match by  date and calls function to
 // render bows based on how many bows there are
-function sortBowsByDate(bows) {
-  /* TODO: Consider using a .forEach loop here. -jc */
-  /* TODO: Depening on a global date value is a bit risky, could you make it more narrowly scoped by adding a date parameter? -jc */
-  for(var i = 0; i<bows.length; i++)
-  if(bows[i].date === date) {
-    if(bows[i].length > 1) {
-      sortAndRenderBows(bows[i]);
-    } else {
-      renderBow(bows[i]);
-    }
-  }
-}
+// function sortBowsByDate(bows) {
+//   /* TODO: Consider using a .forEach loop here. -jc */
+//   /* TODO: Depening on a global date value is a bit risky, could you make it more narrowly scoped by adding a date parameter? -jc */
+//   console.log("SORTING BOWS: ", bows)
+//   for(var i = 0; i<bows.length; i++) {
+//     console.log(i + ". " , bows[i]);
+//     if(bows[i].date === date) {
+//       if(bows[i].length > 1) {
+//         sortAndRenderBows(bows[i]);
+//       } else {
+//         renderBow(bows[i]);
+//       }
+//     }
+//   }
+// }
 
-/* TODO: This function is never called. Please remove. -jc */
-function clearBows() {
-  $bowlist.empty();
-}
+
+// /* TODO: This function is never called. Please remove. -jc */
+// function clearBows() {
+//   $bowlist.empty();
+// }
