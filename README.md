@@ -2,28 +2,25 @@
 
 *Today I Learned (T.I.L.) is an app where users can login and store beads of wisdom and interesting factoids that he/she learns throughout the day. Even if you're not a user you can see other knowledge nuggets left by other users.*
 
-[https://whispering-earth-61253.herokuapp.com/]()
+Heroku: [T.I.L. App](https://whispering-earth-61253.herokuapp.com/)
 
 ## Technologies Used
 
-* Handlebars
 * Bootstrap
 * jQuery
 * HTML
 * CSS
 * Javascript
-* Mongoose
 * MongoDB
 * Express
 * Passport
 * Node.js
-* Bower
 
 ## Existing Features
 
 * User Authentication/Authorization
 * Create, edit, and delete your beads of wisdom
-* Search your own beads of wisdom by date
+* Search your own beads of wisdom by date (In Progress)
 * Or search all beads of wisdom by all users
 
 ## Planned Features
@@ -38,7 +35,7 @@
 ##Screenshot(s)
 
 ###Homepage
-<img src="/public/images/TIL_homepage.png">
+<img src="/public/images/TIL-homepage.png">
 
 ###User Profile
-<img src="/public/images/TIL_profile.png">
+<img src="/public/images/TIL-profile.png">
