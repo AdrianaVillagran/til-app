@@ -120,7 +120,13 @@ app.get('/api', controllers.api.index);
 app.get('/api/bows', controllers.bow.index);
 app.get('/api/users', controllers.users.index);
 app.get('/api/users/:username/bows', controllers.userBows.index);
-/*TODO: your :date parameter is making your endpoint confused. It's looking for : 'http://localhost:3000/api/users/justin/bows/10/01/2016'.  You should consider using a query instead: 'http://localhost:3000/api/users/justin/bows/?date=10012016'.  This will allow you to go to a specific user and pull the query parameters out to filter results for just that user with that date.*/
+
+/*TODO: your :date parameter is making your endpoint confused.
+It's looking for : 'http://localhost:3000/api/users/justin/bows/10/01/2016'.  Y
+ou should consider using a query instead: 'http://localhost:3000/api/users/justin/bows/?date=10012016'.
+This will allow you to go to a specific user and pull the query parameters out to filter results
+for just that user with that date.*/
+
 app.get('/api/users/:username/bows/:date', controllers.userBows.show);
 app.delete('/api/users/:username/bows/:id', controllers.userBows.destroy);
 app.post('/api/users/:username/bows', controllers.userBows.create);

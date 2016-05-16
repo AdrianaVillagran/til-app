@@ -136,10 +136,16 @@ function searchByDate(event) {
 
 // function to sort through and call function to handle array of bow arrays that
 // comes back when search by date entry is submitted
-/* TODO: The name of this array, bows, is misleading. This array is an array of your users, correct? Consider changing the name of this parameter. It'll make the code easier to read by other devs. -jc */
+
+/* TODO: The name of this array, bows, is misleading. This array is an array of your users, correct?
+Consider changing the name of this parameter. It'll make the code easier to read by other devs. -jc */
+
 function handleBowDateSuccess(bows) {
     //filters through array of bow arrays
-    /* TODO: Careful, this doesn't filter. This iterates through your bows array and calls a function on them.  Please consider turning this into a bows.forEach function. -jc */
+
+    /* TODO: Careful, this doesn't filter. This iterates through your bows array and
+    calls a function on them.  Please consider turning this into a bows.forEach function. -jc */
+
     for(var i = 0; i<bows.length; i++) {
       sortBowsByDate(bows[i]);
     }
@@ -148,8 +154,11 @@ function handleBowDateSuccess(bows) {
 // sorts through bows to find those that match by  date and calls function to
 // render bows based on how many bows there are
 function sortBowsByDate(bows) {
+
   /* TODO: Consider using a .forEach loop here. -jc */
-  /* TODO: Depening on a global date value is a bit risky, could you make it more narrowly scoped by adding a date parameter? -jc */
+  /* TODO: Depening on a global date value is a bit risky, could you make it more
+  narrowly scoped by adding a date parameter? -jc */
+
   for(var i = 0; i<bows.length; i++)
   if(bows[i].date === date) {
     if(bows[i].length > 1) {
@@ -161,6 +170,7 @@ function sortBowsByDate(bows) {
 }
 
 /* TODO: This function is never called. Please remove. -jc */
+
 function clearBows() {
   $bowlist.empty();
 }

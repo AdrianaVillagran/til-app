@@ -47,7 +47,10 @@ function create(req, res) {
 
 
 function show(req, res) {
-  /* TODO: This endpoint never gets called.  When you activate a search with the date as a parameter, it ignores the date string.  Try creating  a route such as /api/users/:username/search/?date=MM/DD/YYYY . Access the date object in this string with req.query.  Change this route to the above recommended route adn you should be where you want to be. -jc */
+  /* TODO: This endpoint never gets called.  When you activate a search with the date as a
+  parameter, it ignores the date string.  Try creating  a route such as /api/users/:username/search/?date=MM/DD/YYYY .
+  Access the date object in this string with req.query.  Change this route to the above recommended route
+  adn you should be where you want to be. -jc */
   var username = req.params.username;
   var date = req.params.date;
 

@@ -106,7 +106,10 @@ function deleteBow(event){
   event.preventDefault();
 
   var bowId = $(this).closest('.bow').data('bow-id');
-  /* TODO: Typically we'd like to remove data once we know we've been successful.  Consider moving this removal down into your success function for your ajax Delete -jc */
+
+  /* TODO: Typically we'd like to remove data once we know we've been successful.
+  Consider moving this removal down into your success function for your ajax Delete -jc */
+
   $('div[data-bow-id=' + bowId + ']').remove();
 
   $.ajax ({
@@ -152,7 +155,12 @@ function handleUpdatedBow(json) {
 function searchByDate(event) {
   event.preventDefault();
   var date = $('#search').val();
-  /* TODO: At this point you should consider converting this ajax request to a query by attaching 'search/?date=' to the front of your date variable. You can access this on the server side with req.query and use it to filter out your matches. I understand your methodology here.  Computers are just too easily confused. */
+
+  /* TODO: At this point you should consider converting this ajax request to a query
+  by attaching 'search/?date=' to the front of your date variable. You can access this
+  on the server side with req.query and use it to filter out your matches.
+  I understand your methodology here.  Computers are just too easily confused. */
+
   $.ajax({
     method: 'GET',
     url: '/api/users/' + username + '/bows/' + date,
