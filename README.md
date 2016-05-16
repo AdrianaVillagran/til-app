@@ -1,6 +1,6 @@
 # T.I.L. App
 
-*Today I Learned (T.I.L.) is an app where users can login and store beads of wisdom and interesting factoids that he/she learns throughout the day. Even if you're not a user you can see other knowledge nuggets left by other users.*
+*Today I Learned (T.I.L.) is an app where users can create an account and store beads of wisdom and interesting factoids that they learn throughout the day. If you're not a registered user you can enjoy reading knowledge nuggets posted by other users.*
 
 Heroku: [T.I.L. App](https://whispering-earth-61253.herokuapp.com/)
 
