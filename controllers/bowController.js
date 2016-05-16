@@ -19,8 +19,6 @@ function index(req, res) {
     console.log("BOWS LENGTH: ", bows.length);
     res.json(bows);
   });
-
-
 }
 
 
